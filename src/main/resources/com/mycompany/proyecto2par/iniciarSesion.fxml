@@ -50,7 +50,7 @@
                         <Font size="18.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="btnIngresar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#iniciarSesion" text="Ingresar">
+                  <Button fx:id="btnIngresar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#iniciarSesion" text="Ingresar">
                      <font>
                         <Font name="Bell MT Bold" size="18.0" />
                      </font>

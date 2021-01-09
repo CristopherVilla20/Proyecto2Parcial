@@ -13,11 +13,13 @@ public class Usuario {
     private String correo;
     private String contrasenia;
     private String privilegio;
+    private String nombre;
 
-    public Usuario(String privilegio, String correo, String contrasenia) {
+    public Usuario(String privilegio, String nombre, String correo, String contrasenia) {
         this.correo = correo;
         this.contrasenia = contrasenia;
         this.privilegio = privilegio;
+        this.nombre = nombre;
     }
 
     public String getCorreo() {
@@ -42,6 +44,14 @@ public class Usuario {
 
     public void setPrivilegio(String privilegio) {
         this.privilegio = privilegio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-
+    private static Usuario user = null;
     /**
      *
      * @param stage
@@ -27,8 +27,22 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static Usuario getUser() {
+        return user;
+    }
+
+    public static void setUser(Usuario user) {
+        App.user = user;
+    }   
+    
+    static void setRoot(String fxml) {
+        try{
+            scene.setRoot(loadFXML(fxml));
+        }
+        catch(IOException ex){
+            System.out.println("Algo sucedio");
+            System.out.println(ex);
+        }
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
@@ -41,7 +55,7 @@ public class App extends Application {
      * @param args
      */
     public static void main(String[] args) {
-        launch() ;
+        launch();
     }
 
 }

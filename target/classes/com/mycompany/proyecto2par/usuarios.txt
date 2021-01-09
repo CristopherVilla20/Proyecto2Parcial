@@ -1,4 +1,4 @@
-Privilegio;NombreUsuario;Contrasenia
-administrador;cgvilla@espol.edu.ec;1234
-administrador;ujcueva@espol.edu.ec;4321
-mesero;sjgarcia@espol.edu.ec;abcd
+Privilegio;Nombre;NombreUsuario;Contrasenia
+administrador;Christopher Villa;cgvilla@espol.edu.ec;1234
+administrador;Ulises Cueva;ujcueva@espol.edu.ec;4321
+mesero;Stalin Garcia;sjgarcia@espol.edu.ec;abcd

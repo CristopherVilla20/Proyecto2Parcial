@@ -1,2 +1,7 @@
+com\mycompany\proyecto2par\UsuarioData.class
+com\mycompany\proyecto2par\InterfazMeseroController.class
+com\mycompany\proyecto2par\InterfazAdministradorController.class
 com\mycompany\proyecto2par\App.class
+com\mycompany\proyecto2par\Usuario.class
 module-info.class
+com\mycompany\proyecto2par\IniciarSesionController.class

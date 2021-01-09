@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
@@ -25,54 +26,58 @@ import javafx.scene.control.TextField;
 public class IniciarSesionController implements Initializable {
 
 
+    //private Usuario user = null;
+
     @FXML
     private TextField txtUsuario;
     @FXML
-    private PasswordField txtContraseña;
-    
+    private PasswordField txtContraseña; 
     @FXML
     private Button btnIngresar;
     @FXML
     private Label lbmensajito;
+    
+    
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
+    
     @FXML
-    private void iniciarSesion(ActionEvent event) throws IOException {
+    private void iniciarSesion(MouseEvent event) throws IOException {
         try {
             if (txtUsuario.getText().isEmpty() || txtContraseña.getText().isEmpty()) {
-                throw new NullPointerException("Error al iniciar sesión.");
+                throw new NullPointerException();
             }
             String correoUsuario = txtUsuario.getText();
             String contrasenia = txtContraseña.getText();
             ArrayList<Usuario> usuarios = UsuarioData.leerUsuarios();
             for (Usuario u : usuarios) {
                 if (u.getCorreo().equals(correoUsuario) && u.getContrasenia().equals(contrasenia)) {
+                    App.setUser(u);
                     if (u.getPrivilegio().equals("administrador")) {
                         App.setRoot("interfazAdministrador");
-                    } else if (u.getPrivilegio().equals("mesero")) {
-                        //App.setRoot("interfazMesero");
-
+                    } else if (u.getPrivilegio().equals("mesero")) {              
+                        App.setRoot("interfazMesero");
                     }
                 }
-
             }
-
+            if (App.getUser() == null) {
+                lbmensajito.setText("Credenciales Invalidas.");
+            }
         } catch (NullPointerException e) {
             lbmensajito.setText("Los campos no pueden estar vacíos.");
-        } catch (Exception w) {
-            lbmensajito.setText("Ha ocurrido un error");
-
         }
 
     }
+
 
 }
 

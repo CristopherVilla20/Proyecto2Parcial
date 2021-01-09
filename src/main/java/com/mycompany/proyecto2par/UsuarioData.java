@@ -34,7 +34,7 @@ public class UsuarioData {
                 while ((linea = bf.readLine()) != null) {
                     //dividir la en partes 
                     String[] partes = linea.split(";");
-                    us.add(new Usuario(partes[0], partes[1], partes[2]));
+                    us.add(new Usuario(partes[0], partes[1], partes[2], partes[3]));
                 }
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());

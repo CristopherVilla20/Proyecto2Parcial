@@ -12,18 +12,17 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author User
+ * @author Stalin Garcia
  */
-public class InterfazAministradorController implements Initializable {
+public class InterfazAdministradorController implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
 }

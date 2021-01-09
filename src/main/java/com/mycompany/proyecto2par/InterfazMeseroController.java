@@ -7,7 +7,9 @@ package com.mycompany.proyecto2par;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -16,12 +18,18 @@ import javafx.fxml.Initializable;
  */
 public class InterfazMeseroController implements Initializable {
 
+    @FXML
+    private Label lbMesero;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        lbMesero.setText("Mesero: "+App.getUser().getNombre());    
+    
     }    
+
     
 }

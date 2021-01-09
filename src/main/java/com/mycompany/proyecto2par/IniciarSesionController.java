@@ -5,13 +5,16 @@
  */
 package com.mycompany.proyecto2par;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 /**
@@ -26,8 +29,11 @@ public class IniciarSesionController implements Initializable {
     private TextField txtUsuario;
     @FXML
     private PasswordField txtContraseña;
+    
     @FXML
     private Button btnIngresar;
+    @FXML
+    private Label lbmensajito;
     /**
      * Initializes the controller class.
      * @param url
@@ -39,15 +45,53 @@ public class IniciarSesionController implements Initializable {
     }    
     
     @FXML
-    private void iniciarSesion(ActionEvent event) {
-        if(!txtUsuario.getText().isEmpty() && !txtContraseña.getText().isEmpty()){
-            String usuario = txtUsuario.getText();
-            String contraseña = txtContraseña.getText();
-            
-            
-            
+    private void iniciarSesion(ActionEvent event) throws IOException {
+        try {
+            if (txtUsuario.getText().isEmpty() || txtContraseña.getText().isEmpty()) {
+                throw new NullPointerException("Error al iniciar sesión.");
+            }
+            String correoUsuario = txtUsuario.getText();
+            String contrasenia = txtContraseña.getText();
+            ArrayList<Usuario> usuarios = UsuarioData.leerUsuarios();
+            for (Usuario u : usuarios) {
+                if (u.getCorreo().equals(correoUsuario) && u.getContrasenia().equals(contrasenia)) {
+                    if (u.getPrivilegio().equals("administrador")) {
+                        App.setRoot("interfazAdministrador");
+                    } else if (u.getPrivilegio().equals("mesero")) {
+                        //App.setRoot("interfazMesero");
+
+                    }
+                }
+
+            }
+
+        } catch (NullPointerException e) {
+            lbmensajito.setText("Los campos no pueden estar vacíos.");
+        } catch (Exception w) {
+            lbmensajito.setText("Ha ocurrido un error");
+
         }
-        
+
     }
 
 }
+
+/*try{
+        String nombre = txtNombre.getText();
+        Genero genero = cbGenero.getValue();
+        if(txtUsuario.getText().isEmpty() || txtContraseña.getText().isEmpty()){
+            throw new NullPointerException("Error al iniciar sesión.");
+        }
+        int rating = Integer.valueOf(txtRating.getText());
+        int año = Integer.valueOf(txtAño.getText());
+        String director = txtDirector.getText();
+        Pelicula p = new Pelicula(nombre,genero,rating,año,director);
+        
+        lbMensaje.setText("La pelicula se guardó");
+        }catch(NullPointerException ex ){
+            lbMensaje.setText("Los campos no pueden estar vacíos");
+        }catch(NumberFormatException ex){
+            lbMensaje.setText("Rating tiene que ser valor numerico");
+        }
+        
+    }*/

@@ -63,6 +63,14 @@
                   <Insets left="30.0" right="30.0" />
                </VBox.margin>
             </VBox>
+            <Label fx:id="lbmensajito">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <InnerShadow blurType="GAUSSIAN" />

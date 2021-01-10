@@ -9,42 +9,26 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
 
+import javafx.scene.control.Label;
 /**
  * FXML Controller class
  *
- * @author ULYSSES CUEVA
+ * @author User
  */
-public class InterfazMeseroController implements Initializable {
+public class PedidosController implements Initializable {
+
 
     @FXML
-    private Label lbMesero;
+    private Label lbNombreMesa;
     @FXML
-    private Circle mesa3;
-    @FXML
-    private Circle mesa6;
-    @FXML
-    private Ellipse mesa13;
-
+    private Label lbTotal;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        lbMesero.setText("Mesero: "+App.getUser().getNombre());    
-    
     }    
-
-    @FXML
-    private void atenderMesa(MouseEvent event) {
-       App.setRoot("pedidos");
-        
-    }
-
     
 }

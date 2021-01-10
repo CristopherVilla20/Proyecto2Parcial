@@ -24,7 +24,7 @@
          <children>
             <Label contentDisplay="CENTER" layoutX="22.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="1">
                <graphic>
-                  <Circle fill="#fff200" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#fff200" onMouseClicked="#atenderMesa" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="81.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="2">
@@ -34,27 +34,27 @@
             </Label>
             <Label contentDisplay="CENTER" layoutX="144.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="3">
                <graphic>
-                  <Circle fill="#61ff00" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="mesa3" fill="#61ff00" onMouseClicked="#atenderMesa" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="207.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="4">
                <graphic>
-                  <Circle fill="#fff200" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#fff200" onMouseClicked="#atenderMesa" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="17.0" layoutY="99.0" prefHeight="65.0" prefWidth="58.0" text="5">
                <graphic>
-                  <Circle fill="#fff200" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#fff200" onMouseClicked="#atenderMesa" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="22.0" layoutY="193.0" prefHeight="65.0" prefWidth="58.0" text="6">
                <graphic>
-                  <Circle fill="#61ff00" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="mesa6" fill="#61ff00" onMouseClicked="#atenderMesa" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="102.0" layoutY="99.0" prefHeight="65.0" prefWidth="58.0" text="7">
                <graphic>
-                  <Circle fill="#fff200" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#fff200" onMouseClicked="#atenderMesa" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="119.0" layoutY="193.0" prefHeight="65.0" prefWidth="58.0" text="8">
@@ -69,28 +69,28 @@
             </Label>
             <Label contentDisplay="CENTER" layoutX="322.0" layoutY="53.0" prefHeight="65.0" prefWidth="58.0" text="10">
                <graphic>
-                  <Circle fill="#fff200" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#fff200" onMouseClicked="#atenderMesa" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="322.0" layoutY="205.0" prefHeight="65.0" prefWidth="58.0" text="11">
                <graphic>
-                  <Circle fill="#fff200" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#fff200" onMouseClicked="#atenderMesa" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#abd8ff" height="312.0" layoutX="513.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="41.0" />
             <Label contentDisplay="CENTER" layoutX="427.0" layoutY="28.0" prefHeight="50.0" prefWidth="73.0" text="12">
                <graphic>
-                  <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Ellipse fill="#fff200" onMouseClicked="#atenderMesa" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="427.0" layoutY="84.0" prefHeight="50.0" prefWidth="73.0" text="13">
                <graphic>
-                  <Ellipse fill="#61ff00" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Ellipse fx:id="mesa13" fill="#61ff00" onMouseClicked="#atenderMesa" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="427.0" layoutY="195.0" prefHeight="50.0" prefWidth="73.0" text="14">
                <graphic>
-                  <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Ellipse fill="#fff200" onMouseClicked="#atenderMesa" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
                </graphic>
             </Label>
             <Label contentDisplay="CENTER" layoutX="427.0" layoutY="249.0" prefHeight="50.0" prefWidth="73.0" text="15">

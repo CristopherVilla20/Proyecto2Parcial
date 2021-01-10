@@ -7,7 +7,10 @@ package com.mycompany.proyecto2par;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -15,6 +18,9 @@ import javafx.fxml.Initializable;
  * @author Stalin Garcia
  */
 public class InterfazAdministradorController implements Initializable {
+
+    @FXML
+    private Button btnConfirmacion;
 
     /**
      * Initializes the controller class.
@@ -24,5 +30,11 @@ public class InterfazAdministradorController implements Initializable {
         // TODO
         
     }    
+
+    @FXML
+    private void cerrarSesion(MouseEvent event) {
+        App.setUser(null);
+        App.setRoot("iniciarSesion");
+    }
     
 }

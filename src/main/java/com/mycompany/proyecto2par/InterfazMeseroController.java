@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
@@ -29,6 +30,8 @@ public class InterfazMeseroController implements Initializable {
     private Circle mesa6;
     @FXML
     private Ellipse mesa13;
+    @FXML
+    private Button btnCerrarSesion;
 
     /**
      * Initializes the controller class.
@@ -44,6 +47,13 @@ public class InterfazMeseroController implements Initializable {
     private void atenderMesa(MouseEvent event) {
        App.setRoot("pedidos");
         
+    }
+
+    @FXML
+    private void cerrarSesion(MouseEvent event) {
+        App.setUser(null);
+        App.setRoot("iniciarSesion");
+        //System.out.println(App.getUser()==null);
     }
 
     

@@ -84,12 +84,12 @@
                </children></VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #c5e2da;">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="145.0" style="-fx-background-color: #1eff69;" text="FINALIZAR ORDEN">
+                  <Button fx:id="btnFinalizarOrden" mnemonicParsing="false" onMouseClicked="#finalizarOrden" prefWidth="145.0" style="-fx-background-color: #1eff69;" text="FINALIZAR ORDEN">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #1e90ff;" text="REGRESAR">
+                  <Button fx:id="btnRegresar" mnemonicParsing="false" onMouseClicked="#regresar" style="-fx-background-color: #1e90ff;" text="REGRESAR">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

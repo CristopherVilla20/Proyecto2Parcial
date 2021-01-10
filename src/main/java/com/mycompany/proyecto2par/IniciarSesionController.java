@@ -62,6 +62,7 @@ public class IniciarSesionController implements Initializable {
             for (Usuario u : usuarios) {
                 if (u.getCorreo().equals(correoUsuario) && u.getContrasenia().equals(contrasenia)) {
                     App.setUser(u);
+                    //System.out.println(App.getUser()!=null);
                     if (u.getPrivilegio().equals("administrador")) {
                         App.setRoot("interfazAdministrador");
                     } else if (u.getPrivilegio().equals("mesero")) {              

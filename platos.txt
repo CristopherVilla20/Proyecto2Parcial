@@ -1,0 +1,6 @@
+Bebida;CocaCola;2.0
+Bebida;CocaCola;2.0
+Bebida;CocaCola;2.0
+Bebida;CocaCola;2.0
+Bebida;CocaCola;2.0
+Bebida;CocaCola;2.0

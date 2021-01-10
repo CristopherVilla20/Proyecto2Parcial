@@ -27,6 +27,14 @@ public class App extends Application {
         stage.show();
     }
 
+    public static Scene getScene() {
+        return scene;
+    }
+
+    public static void setScene(Scene scene) {
+        App.scene = scene;
+    }
+    
     public static Usuario getUser() {
         return user;
     }

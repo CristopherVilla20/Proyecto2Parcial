@@ -502,7 +502,7 @@
                         </ScrollPane>
                         <HBox prefHeight="214.0" prefWidth="600.0">
                            <children>
-                              <VBox prefHeight="205.0" prefWidth="285.0" style="-fx-border-color: #CAC6BE;">
+                              <VBox fx:id="vBoxPanelIngreso" prefHeight="205.0" prefWidth="285.0" style="-fx-border-color: #CAC6BE;">
                                  <children>
                                     <TitledPane animated="false" collapsible="false" expanded="false" text="Ingresar nuevo plato" />
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">

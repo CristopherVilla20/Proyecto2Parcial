@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Ellipse?>
@@ -37,8 +45,8 @@
                               </VBox>
                               <VBox prefHeight="54.0" prefWidth="156.0">
                                  <children>
-                                    <Label text="Label" />
-                                    <Label text="Label" />
+                                    <Label text="#" />
+                                    <Label text="\$$" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="54.0" prefWidth="130.0" />
@@ -216,7 +224,379 @@
             </Tab>
             <Tab text="Gestión Menú">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ScrollPane prefHeight="158.0" prefWidth="600.0">
+                           <content>
+                              <GridPane prefHeight="233.0" prefWidth="600.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="117.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="122.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="69.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="107.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="85.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@americano.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Americano">
+                                                   <padding>
+                                                      <Insets left="2.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@capuccino.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Capuccino">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="75.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@rollo%20canela.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Rollo de canela">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="141.0" prefHeight="75.0" prefWidth="128.0" GridPane.columnIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@bombon%20.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Bombom">
+                                                   <padding>
+                                                      <Insets left="10.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="110.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@dulce%20de%20coco.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Dulce de coco" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="110.0" layoutY="75.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@torta%20chocolate.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Torta de chocolate" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="110.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@brazo%20gitano.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Brazo Gitano" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="210.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@espresso.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Expresso" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="210.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@budín.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Budin" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="310.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@flan.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Flan" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="310.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@cafe%20con%20leche.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Cafe con leche" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="410.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@macchiato.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Machiatto" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="410.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@cafe%20latte.jpg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Cafe Latte" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="510.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@mozaico.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Mozaico" />
+                                                <Label text="\$$" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                        <HBox prefHeight="214.0" prefWidth="600.0">
+                           <children>
+                              <VBox prefHeight="205.0" prefWidth="285.0" style="-fx-border-color: #CAC6BE;">
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" expanded="false" text="Ingresar nuevo plato" />
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label text="Nombre:" />
+                                          <TextField fx:id="txtNombreIngreso" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+                                       <children>
+                                          <Label text="Precio:" />
+                                          <TextField fx:id="txtPrecioIngreso" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="31.0">
+                                       <children>
+                                          <Label text="Tipo:" />
+                                          <ComboBox fx:id="cbTipoIngreso" prefWidth="150.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                                       <children>
+                                          <Button fx:id="btnAñadirPlato" mnemonicParsing="false" onMouseClicked="#AñadirPlato" text="Añadir" />
+                                          <Button fx:id="btnLimpiar" mnemonicParsing="false" onMouseClicked="#Limpiar" text="Limpiar" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="214.0" prefWidth="316.0">
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" expanded="false" text="Modificar plato" />
+                                    <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="36.0" prefHeight="100.0" prefWidth="200.0" spacing="66.0">
+                                       <children>
+                                          <Label text="Nombre" />
+                                          <TextField fx:id="txtNombrePlato" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="82.0" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                                       <children>
+                                          <Label text="Nuevo Nombre:" />
+                                          <TextField fx:id="txtNombreNuevo" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="36.0">
+                                       <children>
+                                          <Label text="Nuevo precio:" />
+                                          <TextField fx:id="txtPrecioNuevo" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="84.0">
+                                       <children>
+                                          <Label text="Tipo:" />
+                                          <ComboBox fx:id="cbTipoNuevo" prefWidth="150.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                                       <children>
+                                          <Button fx:id="btnModificarPlato" mnemonicParsing="false" onMouseClicked="#ModificarPLato" text="Modificar" />
+                                          <Button fx:id="btnLimpiar" mnemonicParsing="false" onMouseClicked="#Limpiar" text="Limpiar" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
               </content>
             </Tab>
             <Tab text="Cerrar Sesión">

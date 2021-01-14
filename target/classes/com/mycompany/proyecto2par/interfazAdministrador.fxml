@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -12,617 +11,144 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2par.InterfazAdministradorController">
-   <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
-        <tabs>
-          <Tab text="Monitoreo">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #775814;">
+<TabPane maxHeight="540.0" maxWidth="750.0" minHeight="540.0" minWidth="750.0" prefHeight="540.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2par.InterfazAdministradorController">
+  <tabs>
+    <Tab text="Monitoreo">
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <Pane id="panelSueloRes" fx:id="panelSuelo" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Label contentDisplay="CENTER" layoutX="22.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="1">
-                           <graphic>
-                              <Circle fill="#fff200" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="317.0" prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: #D5A94A;">
-                           <children>
-                              <VBox prefHeight="60.0" prefWidth="154.0">
-                                 <children>
-                                    <Label text="Número Comensales:  " />
-                                    <Label text="Total Facturado:" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="54.0" prefWidth="156.0">
-                                 <children>
-                                    <Label text="#" />
-                                    <Label text="\$$" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="54.0" prefWidth="130.0" />
-                              <VBox prefHeight="54.0" prefWidth="158.0" />
-                           </children>
-                        </HBox>
-                        <Label contentDisplay="CENTER" layoutX="81.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="2">
-                           <graphic>
-                              <Circle fill="#ff4821" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="144.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="3">
-                           <graphic>
-                              <Circle fill="#fff41f" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="207.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="4">
-                           <graphic>
-                              <Circle fill="#fff200" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="17.0" layoutY="99.0" prefHeight="65.0" prefWidth="58.0" text="5">
-                           <graphic>
-                              <Circle fill="#fff200" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="22.0" layoutY="193.0" prefHeight="65.0" prefWidth="58.0" text="6">
-                           <graphic>
-                              <Circle fill="#fff200" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="102.0" layoutY="99.0" prefHeight="65.0" prefWidth="58.0" text="7">
-                           <graphic>
-                              <Circle fill="#fff200" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="119.0" layoutY="193.0" prefHeight="65.0" prefWidth="58.0" text="8">
-                           <graphic>
-                              <Circle fill="#ff4821" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="234.0" layoutY="132.0" prefHeight="65.0" prefWidth="58.0" text="9">
-                           <graphic>
-                              <Circle fill="#ff4821" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="322.0" layoutY="53.0" prefHeight="65.0" prefWidth="58.0" text="10">
-                           <graphic>
-                              <Circle fill="#fff200" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="322.0" layoutY="205.0" prefHeight="65.0" prefWidth="58.0" text="11">
-                           <graphic>
-                              <Circle fill="#fff200" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#325575" height="278.0" layoutX="509.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" width="41.0" />
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="28.0" prefHeight="50.0" prefWidth="73.0" text="12">
-                           <graphic>
-                              <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="84.0" prefHeight="50.0" prefWidth="73.0" text="13">
-                           <graphic>
-                              <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="195.0" prefHeight="50.0" prefWidth="73.0" text="14">
-                           <graphic>
-                              <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="249.0" prefHeight="50.0" prefWidth="73.0" text="15">
-                           <graphic>
-                              <Ellipse fill="#ff4821" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label layoutX="479.0" layoutY="112.0" prefHeight="39.0" prefWidth="187.0" rotate="270.0" text="Cocina">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a0a9b2" height="359.0" layoutX="577.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+                        <Label layoutX="588.0" layoutY="179.0" rotate="270.0" text="COCINA" textFill="RED">
                            <font>
-                              <Font name="Arial" size="48.0" />
+                              <Font name="Arial Black" size="48.0" />
                            </font>
                         </Label>
                      </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Diseño Plano">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #775814;">
+                  </Pane>
+               </center>
+               <bottom>
+                  <VBox prefHeight="97.0" prefWidth="750.0" spacing="10.0" style="-fx-background-color: #BFA674;" BorderPane.alignment="CENTER">
                      <children>
-                        <Label contentDisplay="CENTER" layoutX="22.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="1">
-                           <graphic>
-                              <Circle fill="#fff200" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="81.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="2">
-                           <graphic>
-                              <Circle fill="#ff4821" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="144.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="3">
-                           <graphic>
-                              <Circle fill="#fff41f" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="207.0" layoutY="22.0" prefHeight="62.0" prefWidth="53.0" text="4">
-                           <graphic>
-                              <Circle fill="#fff200" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="17.0" layoutY="99.0" prefHeight="65.0" prefWidth="58.0" text="5">
-                           <graphic>
-                              <Circle fill="#fff200" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="22.0" layoutY="193.0" prefHeight="65.0" prefWidth="58.0" text="6">
-                           <graphic>
-                              <Circle fill="#fff200" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="102.0" layoutY="99.0" prefHeight="65.0" prefWidth="58.0" text="7">
-                           <graphic>
-                              <Circle fill="#fff200" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="119.0" layoutY="193.0" prefHeight="65.0" prefWidth="58.0" text="8">
-                           <graphic>
-                              <Circle fill="#ff4821" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="234.0" layoutY="132.0" prefHeight="65.0" prefWidth="58.0" text="9">
-                           <graphic>
-                              <Circle fill="#ff4821" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="322.0" layoutY="53.0" prefHeight="65.0" prefWidth="58.0" text="10">
-                           <graphic>
-                              <Circle fill="#fff200" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="322.0" layoutY="205.0" prefHeight="65.0" prefWidth="58.0" text="11">
-                           <graphic>
-                              <Circle fill="#fff200" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#325575" height="278.0" layoutX="509.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" width="41.0" />
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="28.0" prefHeight="50.0" prefWidth="73.0" text="12">
-                           <graphic>
-                              <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="84.0" prefHeight="50.0" prefWidth="73.0" text="13">
-                           <graphic>
-                              <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="195.0" prefHeight="50.0" prefWidth="73.0" text="14">
-                           <graphic>
-                              <Ellipse fill="#fff200" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label contentDisplay="CENTER" layoutX="427.0" layoutY="249.0" prefHeight="50.0" prefWidth="73.0" text="15">
-                           <graphic>
-                              <Ellipse fill="#ff4821" radiusX="35.0" radiusY="22.0" stroke="BLACK" strokeType="INSIDE" />
-                           </graphic>
-                        </Label>
-                        <Label layoutX="479.0" layoutY="112.0" prefHeight="39.0" prefWidth="187.0" rotate="270.0" text="Cocina">
+                        <Label text="Numero de comensales:">
                            <font>
-                              <Font name="Arial" size="48.0" />
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Total facturado:">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
                            </font>
                         </Label>
                      </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Gestión Menú">
-              <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <ScrollPane prefHeight="158.0" prefWidth="600.0">
-                           <content>
-                              <GridPane prefHeight="233.0" prefWidth="600.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="117.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="122.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="69.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="107.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="85.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@americano.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Americano">
-                                                   <padding>
-                                                      <Insets left="2.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@capuccino.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets left="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Capuccino">
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="75.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@rollo%20canela.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets left="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Rollo de canela">
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="141.0" prefHeight="75.0" prefWidth="128.0" GridPane.columnIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@bombon%20.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Bombom">
-                                                   <padding>
-                                                      <Insets left="10.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="110.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@dulce%20de%20coco.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Dulce de coco" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="110.0" layoutY="75.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@torta%20chocolate.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Torta de chocolate" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="110.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@brazo%20gitano.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Brazo Gitano" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="210.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@espresso.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Expresso" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="210.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@budín.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Budin" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="310.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@flan.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Flan" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="310.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@cafe%20con%20leche.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Cafe con leche" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="410.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@macchiato.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Machiatto" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="410.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@cafe%20latte.jpg" />
-                                             </image>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Cafe Latte" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="510.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@mozaico.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Mozaico" />
-                                                <Label text="\$$" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </GridPane>
-                           </content>
-                        </ScrollPane>
-                        <HBox prefHeight="214.0" prefWidth="600.0">
-                           <children>
-                              <VBox prefHeight="205.0" prefWidth="285.0" style="-fx-border-color: #CAC6BE;">
-                                 <children>
-                                    <TitledPane animated="false" collapsible="false" expanded="false" text="Ingresar nuevo plato" />
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                       <children>
-                                          <Label text="Nombre:" />
-                                          <TextField fx:id="txtNombreIngreso" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
-                                       <children>
-                                          <Label text="Precio:" />
-                                          <TextField fx:id="txtPrecioIngreso" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="31.0">
-                                       <children>
-                                          <Label text="Tipo:" />
-                                          <ComboBox fx:id="cbTipoIngreso" prefWidth="150.0" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
-                                       <children>
-                                          <Button fx:id="btnAñadirPlato" mnemonicParsing="false" onMouseClicked="#AñadirPlato" text="Añadir" />
-                                          <Button fx:id="btnLimpiar" mnemonicParsing="false" onMouseClicked="#Limpiar" text="Limpiar" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="5.0" />
-                                 </padding>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="214.0" prefWidth="316.0">
-                                 <padding>
-                                    <Insets bottom="5.0" />
-                                 </padding>
-                                 <children>
-                                    <TitledPane animated="false" collapsible="false" expanded="false" text="Modificar plato" />
-                                    <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="36.0" prefHeight="100.0" prefWidth="200.0" spacing="66.0">
-                                       <children>
-                                          <Label text="Nombre" />
-                                          <TextField fx:id="txtNombrePlato" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="82.0" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
-                                       <children>
-                                          <Label text="Nuevo Nombre:" />
-                                          <TextField fx:id="txtNombreNuevo" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="36.0">
-                                       <children>
-                                          <Label text="Nuevo precio:" />
-                                          <TextField fx:id="txtPrecioNuevo" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="84.0">
-                                       <children>
-                                          <Label text="Tipo:" />
-                                          <ComboBox fx:id="cbTipoNuevo" prefWidth="150.0" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
-                                       <children>
-                                          <Button fx:id="btnModificarPlato" mnemonicParsing="false" onMouseClicked="#ModificarPLato" text="Modificar" />
-                                          <Button fx:id="btnLimpiar" mnemonicParsing="false" onMouseClicked="#Limpiar" text="Limpiar" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </VBox>
-              </content>
-            </Tab>
-            <Tab text="Cerrar Sesión">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               </bottom>
+            </BorderPane>
+         </content>
+    </Tab>
+      <Tab text="Diseño Plano">
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <Pane id="panelSueloRes" fx:id="panelSuelo2" onMouseClicked="#añardirMesa" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Label alignment="CENTER" layoutX="111.0" layoutY="222.0" prefHeight="42.0" prefWidth="378.0" text="¿Está seguro de que desea cerrar sesión?">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a0a9b2" height="359.0" layoutX="577.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+                        <Label layoutX="589.0" layoutY="193.0" rotate="270.0" text="COCINA" textFill="RED">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Arial Black" size="48.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="177.0" fitWidth="173.0" layoutX="214.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Salir.jpeg" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="btnConfirmacion" layoutX="250.0" layoutY="280.0" mnemonicParsing="false" onMouseClicked="#cerrarSesion" prefHeight="24.0" prefWidth="98.0" text="Sí" textFill="#1c1b1b">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
                      </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </children>
-</HBox>
+                  </Pane>
+               </center>
+            </BorderPane>
+         </content>
+      </Tab>
+      <Tab text="Gestión Menú">
+         <content>
+            <VBox>
+               <children>
+                  <FlowPane fx:id="panelComidas" prefHeight="319.0" prefWidth="750.0" />
+                  <HBox prefHeight="254.0" prefWidth="750.0">
+                     <children>
+                        <TitledPane animated="false" collapsible="false" prefHeight="239.0" prefWidth="360.0" text="Agregar Plato">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="358.0">
+                                 <children>
+                                    <Label layoutX="26.0" layoutY="15.0" prefHeight="19.0" prefWidth="66.0" text="Nombre:" />
+                                    <Label layoutX="26.0" layoutY="50.0" text="Precio:" />
+                                    <Label layoutX="24.0" layoutY="130.0" text="Ruta imagen:" />
+                                    <TextField fx:id="txtNombreAgregar" layoutX="146.0" layoutY="12.0" />
+                                    <TextField fx:id="txtPrecioAgregar" layoutX="145.0" layoutY="46.0" />
+                                    <TextField fx:id="txtRutaAgregar" layoutX="145.0" layoutY="126.0" />
+                                    <Button fx:id="btnAgregar" layoutX="92.0" layoutY="162.0" mnemonicParsing="false" text="Agregar" />
+                                    <Button fx:id="btnLimpiarA" layoutX="195.0" layoutY="162.0" mnemonicParsing="false" text="Limpiar" />
+                                    <ComboBox fx:id="cbTipoComidaA" layoutX="146.0" layoutY="86.0" prefWidth="150.0" />
+                                    <Label layoutX="26.0" layoutY="90.0" text="Tipo:" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" prefHeight="223.0" prefWidth="397.0" text="Modificar Plato">
+                           <content>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="26.0" layoutY="9.0" text="Nombre:" />
+                                    <Label layoutX="26.0" layoutY="38.0" text="Nuevo nombre:" />
+                                    <Label layoutX="26.0" layoutY="69.0" text="Tipo:" />
+                                    <Label layoutX="26.0" layoutY="99.0" text="Precio:" />
+                                    <TextField fx:id="txtNombreModi" layoutX="154.0" layoutY="5.0" />
+                                    <TextField fx:id="txtNuevoNombreModi" layoutX="154.0" layoutY="38.0" />
+                                    <TextField fx:id="txtPrecioModi" layoutX="154.0" layoutY="99.0" />
+                                    <ComboBox fx:id="cbTipoComidaM" layoutX="154.0" layoutY="69.0" prefWidth="150.0" />
+                                    <Label layoutX="25.0" layoutY="129.0" text="Ruta imagen:" />
+                                    <TextField fx:id="txtRutaImgModi" layoutX="155.0" layoutY="129.0" />
+                                    <Button fx:id="btnModificar" layoutX="102.0" layoutY="162.0" mnemonicParsing="false" text="Modificar" />
+                                    <Button fx:id="btnLimpiarM" layoutX="212.0" layoutY="162.0" mnemonicParsing="false" text="Limpiar" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab text="Cerrar Sesión">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="187.0" layoutY="244.0" prefHeight="42.0" prefWidth="378.0" text="¿Está seguro de que desea cerrar sesión?">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="177.0" fitWidth="173.0" layoutX="289.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Salir.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnConfirmacion" layoutX="326.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#cerrarSesion" prefHeight="24.0" prefWidth="98.0" text="Sí" textFill="#1c1b1b">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

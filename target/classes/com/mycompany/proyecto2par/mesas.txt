@@ -1,0 +1,7 @@
+Numero,Capacidad,Ubicacion,Estado
+1,5,90:70,true
+2,5,180:70,true
+3,5,266:70,false
+4,7,106:209,true
+5,7,281:231,false
+7,10,413:118,true

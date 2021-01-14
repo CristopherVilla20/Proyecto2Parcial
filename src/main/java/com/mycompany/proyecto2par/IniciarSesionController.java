@@ -81,23 +81,3 @@ public class IniciarSesionController implements Initializable {
 
 
 }
-
-/*try{
-        String nombre = txtNombre.getText();
-        Genero genero = cbGenero.getValue();
-        if(txtUsuario.getText().isEmpty() || txtContraseña.getText().isEmpty()){
-            throw new NullPointerException("Error al iniciar sesión.");
-        }
-        int rating = Integer.valueOf(txtRating.getText());
-        int año = Integer.valueOf(txtAño.getText());
-        String director = txtDirector.getText();
-        Pelicula p = new Pelicula(nombre,genero,rating,año,director);
-        
-        lbMensaje.setText("La pelicula se guardó");
-        }catch(NullPointerException ex ){
-            lbMensaje.setText("Los campos no pueden estar vacíos");
-        }catch(NumberFormatException ex){
-            lbMensaje.setText("Rating tiene que ser valor numerico");
-        }
-        
-    }*/

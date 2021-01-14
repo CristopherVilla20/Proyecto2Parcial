@@ -109,6 +109,7 @@ public class InterfazAdministradorController implements Initializable {
     private void cerrarSesion(MouseEvent event) {
         App.setUser(null);
         App.setRoot("iniciarSesion");
+        
     }
 
     
@@ -136,7 +137,7 @@ public class InterfazAdministradorController implements Initializable {
         }
         
     
-    }
+        }
 
     @FXML
     private void añardirMesa(MouseEvent event) {

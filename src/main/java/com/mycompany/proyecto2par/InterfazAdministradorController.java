@@ -10,8 +10,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -26,6 +32,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -79,7 +86,7 @@ public class InterfazAdministradorController implements Initializable {
         ponerMesas(panelSuelo2);
         cbTipoComidaA.getItems().addAll("Postre","Bebida");
         cbTipoComidaM.getItems().addAll("Postre","Bebida");
-        
+        /*
         try {
             System.out.println("antes de leer");
             List<Comida> comidas = Comida.cargarComidasArchivo("comidas.txt");
@@ -101,7 +108,7 @@ public class InterfazAdministradorController implements Initializable {
             System.out.println("Aqui es");
             ex.printStackTrace();
         }
-        
+        */
         
     }    
 
@@ -117,12 +124,13 @@ public class InterfazAdministradorController implements Initializable {
         try {
             List<Mesa> mesas = Mesa.cargarMesasArchivo("mesas.txt");
             for(Mesa m: mesas){
-                Circle c = new Circle();
+                Circle c; 
                 //true esta ocupada
-                if(m.isEstado()){
-                    c = new Circle(30,Color.RED);
+                if(m.getEstado()){
+                    c = new Circle(m.getTamanio(),Color.RED);
                 }else{
-                    c = new Circle(30,Color.GREEN);
+                    c = new Circle(m.getTamanio(),Color.GREEN);
+                    
                 }
                 Label l = new Label(m.getNumeroMesa());
                 StackPane st = new StackPane();
@@ -131,7 +139,17 @@ public class InterfazAdministradorController implements Initializable {
                 panel.getChildren().add(st);
                 st.setLayoutX(m.getUbicacion().getX());
                 st.setLayoutY(m.getUbicacion().getY());
+                /*
+                st.setOnMouseClicked(
+                   (MouseEvent event)-> {
+                       mostrarInformacionMesa(m);
+                   }
+                
+                );
+                */
+                st.setOnMouseClicked(new ManejadorInfoMesa ());
             }
+            
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -145,4 +163,66 @@ public class InterfazAdministradorController implements Initializable {
         double y = event.getY();
          
     }
+    /*
+    private void mostrarInformacionMesa (Mesa m ){
+        try {
+            FXMLLoader fxmlLoader
+            = new FXMLLoader(App.class.getResource("informacion_Mesas"));
+            Parent root = fxmlLoader.load();
+            Scene sc = new Scene(root);
+            Stage stage = new Stage();
+            Informacion_MesasController imc = fxmlLoader.getController();
+            imc.getLbcapacidadMesa().setText(String.valueOf(m.getCapacidad()));
+            imc.getLbestadoMesa().setText(String.valueOf(m.getEstado()));
+            imc.getLbnumeroMesa().setText(String.valueOf(m.getNumeroMesa()));
+            imc.getLbnombreMesero().setText("Mesero");
+            
+            stage.show();
+            
+            
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    */
+    private class ManejadorInfoMesa implements EventHandler<MouseEvent> {
+
+        public void handle(MouseEvent event) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("informacion_Mesas"));
+                Parent root = fxmlLoader.load();
+                Scene sc = new Scene(root);
+                Stage stage = new Stage();
+
+                Informacion_MesasController imc = fxmlLoader.getController();
+                for (Node n : panelSuelo.getChildren()) {
+                    if (event.getSource().equals(n)) {
+                        StackPane sp = (StackPane) n;
+                        Label lb = (Label) sp.getChildren().get(1);
+                        List<Mesa> mesas = Mesa.cargarMesasArchivo("mesas.txt");
+                        for (Mesa m : mesas) {
+                            if (String.valueOf(m.getNumeroMesa()).equals(lb.getText())) {
+                                imc.getLbcapacidadMesa().setText(String.valueOf(m.getCapacidad()));
+                                imc.getLbestadoMesa().setText(String.valueOf(m.getEstado()));
+                                imc.getLbnumeroMesa().setText(String.valueOf(m.getNumeroMesa()));
+                            }
+
+                        }
+                    }
+
+                }
+
+                imc.getLbnombreMesero().setText("Mesero");
+
+                stage.setScene(sc);
+                stage.show();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+    }
 }
+

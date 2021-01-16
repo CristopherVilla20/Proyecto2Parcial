@@ -122,7 +122,7 @@
                                  <children>
                                     <ImageView fitHeight="80.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@brazo%20gitano.jpg" />
+                                          <Image url="@brazo_gitano.jpg" />
                                        </image>
                                     </ImageView>
                                     <Label text="Brazo gitano" />
@@ -153,7 +153,7 @@
                                  <children>
                                     <ImageView fitHeight="80.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@dulce%20de%20coco.jpg" />
+                                          <Image url="@dulce_de_coco.jpg" />
                                        </image>
                                     </ImageView>
                                     <Label text="Dulce de coco" />
@@ -181,7 +181,7 @@
                                  <children>
                                     <ImageView fitHeight="80.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@rollo%20canela.jpg" />
+                                          <Image url="@rollo_canela.jpg" />
                                        </image>
                                     </ImageView>
                                     <Label text="Rollos de canela" />
@@ -263,7 +263,7 @@
                                  <children>
                                     <ImageView fitHeight="80.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@cafe%20con%20leche.jpg" />
+                                          <Image url="@cafe_con_leche.jpg" />
                                        </image>
                                     </ImageView>
                                     <Label text="Cafe con leche" />
@@ -277,7 +277,7 @@
                                  <children>
                                     <ImageView fitHeight="80.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@cafe%20latte.jpg" />
+                                          <Image url="@cafe_latte.jpg" />
                                        </image>
                                     </ImageView>
                                     <Label text="Cafe Latte" />

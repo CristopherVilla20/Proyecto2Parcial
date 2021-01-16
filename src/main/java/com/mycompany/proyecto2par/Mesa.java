@@ -21,12 +21,23 @@ public class Mesa {
     private int capacidad;
     private UbicacionesMesas ubicacion;
     private boolean estado;
+    private int tamanio;
 
-    public Mesa(String numeroMesa, int capacidad, UbicacionesMesas ubicacion, boolean estado) {
+    public Mesa(String numeroMesa, int capacidad, UbicacionesMesas ubicacion, boolean estado,int tamanio) {
         this.numeroMesa = numeroMesa;
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;
         this.estado = estado;
+        this.tamanio = tamanio;
+        
+    }
+
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
+    }
+
+    public int getTamanio() {
+        return tamanio;
     }
 
     public String getNumeroMesa() {
@@ -53,7 +64,7 @@ public class Mesa {
         this.ubicacion = ubicacion;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -74,7 +85,7 @@ public class Mesa {
                 String[] p = linea.split(",");
                 String[] u = p[2].split(":");
                 UbicacionesMesas ubicacion = new UbicacionesMesas(Double.valueOf(u[0]),Double.valueOf(u[1]));
-                Mesa mesa = new Mesa(p[0],Integer.parseInt(p[1]),ubicacion,Boolean.parseBoolean(p[3]));
+                Mesa mesa = new Mesa(p[0],Integer.parseInt(p[1]),ubicacion,Boolean.parseBoolean(p[3]),Integer.parseInt(p[4]));             
                 mesas.add(mesa);
             }         
         }  catch (IOException ex) {

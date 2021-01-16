@@ -11,6 +11,3 @@ Postre;Dulce de Coco;1
 Postre;Flan;1
 Postre;Rollo Canela;1
 Postre;Torta Chocolate;1
-Postre;Quesillo;4.0
-Bebida;c;4.0
-Bebida;coque;2.0

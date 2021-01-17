@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -126,6 +128,87 @@
                         </TitledPane>
                      </children>
                   </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab text="Reporte Ventas">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="115.0" prefWidth="750.0">
+                     <children>
+                        <VBox prefHeight="113.0" prefWidth="506.0">
+                           <children>
+                              <HBox alignment="BOTTOM_CENTER" prefHeight="129.0" prefWidth="540.0">
+                                 <children>
+                                    <HBox alignment="BOTTOM_CENTER" prefHeight="80.0" prefWidth="355.0" spacing="10.0">
+                                       <children>
+                                          <Label text="F Inicio">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txt_dateIni" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" right="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_CENTER" prefHeight="63.0" prefWidth="299.0" spacing="10.0">
+                                       <children>
+                                          <Label text="F Fin">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txt_dateFin" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" right="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="lbl_mensajeReporteVenta" alignment="TOP_LEFT" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="113.0" prefWidth="258.0" spacing="20.0">
+                           <children>
+                              <Button fx:id="btn_buscar" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#buscarReporteVentas" prefHeight="28.0" prefWidth="80.0" text="Buscar">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btn_refrescar" alignment="CENTER" layoutX="41.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#refrescarBusquedaReporteVentas" prefHeight="27.0" prefWidth="98.0" text="Refrescar">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tabla" prefWidth="750.0">
+                    <columns>
+                      <TableColumn fx:id="cln_fecha" prefWidth="117.60000306367874" text="Fecha" />
+                        <TableColumn fx:id="cln_mesa" prefWidth="128.79998779296875" text="Mesa" />
+                        <TableColumn fx:id="cln_mesero" prefWidth="132.8000030517578" text="Mesero" />
+                        <TableColumn fx:id="cln_cuenta" prefWidth="121.5999755859375" text="# Cuenta" />
+                        <TableColumn fx:id="cln_cliente" prefWidth="125.5999755859375" text="Cliente" />
+                        <TableColumn fx:id="cln_total" prefWidth="128.800048828125" text="Total" />
+                    </columns>
+                  </TableView>
                </children>
             </VBox>
          </content>

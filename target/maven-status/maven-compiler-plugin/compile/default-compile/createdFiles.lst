@@ -3,13 +3,16 @@ com\mycompany\proyecto2par\InterfazAdministradorController$ManejadorInfoMesa.cla
 com\mycompany\proyecto2par\App.class
 com\mycompany\proyecto2par\Usuario.class
 com\mycompany\proyecto2par\MenuData.class
+com\mycompany\proyecto2par\VentasData.class
 module-info.class
 com\mycompany\proyecto2par\UbicacionesMesas.class
 com\mycompany\proyecto2par\Comida.class
 com\mycompany\proyecto2par\Informacion_MesasController.class
 com\mycompany\proyecto2par\InterfazMeseroController.class
+com\mycompany\proyecto2par\Venta.class
 com\mycompany\proyecto2par\PedidosController.class
 com\mycompany\proyecto2par\InterfazAdministradorController.class
 com\mycompany\proyecto2par\Menu.class
+com\mycompany\proyecto2par\ComidaData.class
 com\mycompany\proyecto2par\Mesa.class
 com\mycompany\proyecto2par\IniciarSesionController.class

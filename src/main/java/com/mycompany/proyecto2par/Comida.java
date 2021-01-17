@@ -60,7 +60,7 @@ public class Comida {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+    /*
     public static List<Comida> cargarComidasArchivo(String nombre_archivo) throws IOException{
         
         String ruta = "comidas.txt";
@@ -83,4 +83,5 @@ public class Comida {
         }
         return comidas;
     }
+    */
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2par.IniciarSesionController">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2par.IniciarSesionController">
    <children>
       <VBox alignment="CENTER" prefHeight="500.0" prefWidth="427.0" style="-fx-background-color: #9E854F;" HBox.hgrow="ALWAYS">
          <children>
@@ -76,7 +76,7 @@
             <InnerShadow blurType="GAUSSIAN" />
          </effect>
       </VBox>
-      <ImageView fitHeight="720.0" fitWidth="560.0" nodeOrientation="INHERIT" HBox.hgrow="ALWAYS">
+      <ImageView fitHeight="540.0" fitWidth="420.0" nodeOrientation="INHERIT" HBox.hgrow="ALWAYS">
          <image>
             <Image url="@imagenInicio.jpg" />
          </image>

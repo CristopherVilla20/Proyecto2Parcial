@@ -1,0 +1,6 @@
+Fecha;Numero_Mesa;Mesero;Cuenta;Cliente;Total
+2021-01-16;1;Stalin Garcia;001;Pedro Ramos;35
+2020-12-16;2;Stalin Garcia;002;Pedro;30
+2020-12-16;3;Stalin Garcia;003;San Pedro;20
+2020-12-15;4;Stalin Garcia;004;Pedro Escamoso;10
+2021-01-16;5;Stalin Garcia;005;Pedrito Jr;12

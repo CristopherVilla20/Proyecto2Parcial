@@ -60,6 +60,7 @@ public class Comida {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
     /*
     public static List<Comida> cargarComidasArchivo(String nombre_archivo) throws IOException{
         
@@ -84,4 +85,9 @@ public class Comida {
         return comidas;
     }
     */
+
+    @Override
+    public String toString() {
+        return "Comida{" + "nombre=" + nombre + ", precio=" + precio + ", tipo=" + tipo + ", imagen=" + imagen + '}';
+    }
 }

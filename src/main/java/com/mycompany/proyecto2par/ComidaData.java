@@ -38,6 +38,7 @@ public class ComidaData {
                     //dividir la en partes 
                     String[] partes = linea.split(",");
                     c.add(new Comida(partes[0], Double.parseDouble(partes[1]), partes[2],partes[3]));
+                    System.out.println(linea);
                 }
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());

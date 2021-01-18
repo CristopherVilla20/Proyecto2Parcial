@@ -153,17 +153,22 @@ public class InterfazAdministradorController implements Initializable {
 
         tabla.setItems(listaVentas);
 
-        /*
-        try {
+        
+       
             //System.out.println("antes de leer");
             List<Comida> comidas = ComidaData.cargarComidasArchivo();
             //System.out.println("lee");
             for(Comida c: comidas){
                 VBox contenedor = new VBox();
+                try{
                 InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
                 //System.out.println("si abre");
                 ImageView imgv = new ImageView(new Image(inputImg));
                 contenedor.getChildren().add(imgv);
+                }catch(Exception ex){
+                    System.out.println(c);
+                    ex.printStackTrace();
+                }
                 Label lb1 = new Label(c.getNombre());
                 Label lb2 = new Label("$ " +String.valueOf(c.getPrecio()));
                 contenedor.getChildren().addAll(lb1,lb2);
@@ -171,11 +176,8 @@ public class InterfazAdministradorController implements Initializable {
             }
             
             
-        } catch (IOException ex) {
-            System.out.println("Aqui es");
-            ex.printStackTrace();
-        }
-         */
+       
+         
     }
 
     @FXML
@@ -207,6 +209,7 @@ public class InterfazAdministradorController implements Initializable {
                 st.setLayoutY(m.getUbicacion().getY());
                 st.setOnMouseClicked(
                         (MouseEvent event) -> {
+                            event.consume();
                             if (panel.getId().equals("panelSuelo")) {
                                 mostrarInformacionMesa(m);
                             }

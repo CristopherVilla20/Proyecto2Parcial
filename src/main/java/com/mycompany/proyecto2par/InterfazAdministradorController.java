@@ -45,6 +45,7 @@ import java.util.GregorianCalendar;
 import java.text.DateFormat;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import javafx.scene.control.Tab;
 
 /**
  * FXML Controller class
@@ -52,6 +53,9 @@ import java.util.Date;
  * @author Stalin Garcia
  */
 public class InterfazAdministradorController implements Initializable {
+    
+    private double x;
+    private double y;
 
     @FXML
     private Button btnConfirmacion;
@@ -114,6 +118,11 @@ public class InterfazAdministradorController implements Initializable {
     private Button btn_refrescar;
     @FXML
     private Label lbl_mensajeReporteVenta;
+    @FXML
+    private Tab pestañaMonitoreo;
+    @FXML
+    private Tab pestañaDiseño;
+    
     
     
    
@@ -177,49 +186,53 @@ public class InterfazAdministradorController implements Initializable {
     }
 
     
-    public void ponerMesas(Pane panel){
+    public void ponerMesas(Pane panel) {
         try {
             List<Mesa> mesas = Mesa.cargarMesasArchivo("mesas.txt");
-            for(Mesa m: mesas){
-                Circle c; 
+            for (Mesa m : mesas) {
+                Circle c;
                 //true esta ocupada
-                if(m.getEstado()){
-                    c = new Circle(m.getTamanio(),Color.RED);
-                }else{
-                    c = new Circle(m.getTamanio(),Color.GREEN);
-                    
+                if (m.getEstado()) {
+                    c = new Circle(m.getTamanio(), Color.RED);
+                } else {
+                    c = new Circle(m.getTamanio(), Color.GREEN);
+
                 }
                 Label l = new Label(m.getNumeroMesa());
                 StackPane st = new StackPane();
-                st.getChildren().addAll(c,l);
-                
+                st.getChildren().addAll(c, l);
+
                 panel.getChildren().add(st);
                 st.setLayoutX(m.getUbicacion().getX());
                 st.setLayoutY(m.getUbicacion().getY());
-                /*
                 st.setOnMouseClicked(
-                   (MouseEvent event)-> {
-                       mostrarInformacionMesa(m);
-                   }
-                
+                        (MouseEvent event) -> {
+                            if (panel.getId().equals("panelSuelo")) {
+                                mostrarInformacionMesa(m);
+                            }
+                            else {
+                                try {
+                                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaGestionMesa.fxml"));
+                                    Parent root = fxmlLoader.load();
+                                    Scene sc = new Scene(root);
+                                    Stage stage = new Stage();
+                                    stage.setScene(sc);
+                                    stage.setResizable(false);
+                                    stage.show();
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                        }
                 );
-                */
-                st.setOnMouseClicked(new ManejadorInfoMesa ());
             }
-            
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
-    
-        }
 
-    @FXML
-    private void añardirMesa(MouseEvent event) {
-        double x = event.getX();
-        double y = event.getY();
-         
     }
+
     
     @FXML
     private void buscarReporteVentas(MouseEvent event) throws IOException {
@@ -250,6 +263,18 @@ public class InterfazAdministradorController implements Initializable {
             lbl_mensajeReporteVenta.setText("Los campos no pueden estar vacíos.");
         } 
     }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public Pane getPanelSuelo2() {
+        return panelSuelo2;
+    }
     
 
     @FXML
@@ -264,19 +289,41 @@ public class InterfazAdministradorController implements Initializable {
         }
         tabla.setItems(listaVentas);
     }
+
+    @FXML
+    private void abrirPanelAM(MouseEvent event) {
+        //panelSuelo2.getChildren();
+        if (!(event.getSource() instanceof StackPane)) {
+            try {
+                this.x = event.getX();
+                this.y = event.getY();
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaNuevaMesa.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene sc = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(sc);
+                stage.setResizable(false);
+                stage.show();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     
-    /*
     private void mostrarInformacionMesa (Mesa m ){
         try {
             FXMLLoader fxmlLoader
-            = new FXMLLoader(App.class.getResource("informacion_Mesas"));
+            = new FXMLLoader(App.class.getResource("informacion_Mesas.fxml"));
             Parent root = fxmlLoader.load();
             Scene sc = new Scene(root);
             Stage stage = new Stage();
+            stage.setScene(sc);
             Informacion_MesasController imc = fxmlLoader.getController();
-            imc.getLbcapacidadMesa().setText(String.valueOf(m.getCapacidad()));
-            imc.getLbestadoMesa().setText(String.valueOf(m.getEstado()));
-            imc.getLbnumeroMesa().setText(String.valueOf(m.getNumeroMesa()));
+            imc.getLbcapacidadMesa().setText("Capacidad:"+String.valueOf(m.getCapacidad()));
+            imc.getLbestadoMesa().setText("Estado:"+String.valueOf(m.getEstado()));
+            imc.getLbnumeroMesa().setText("Numero de mesa:"+String.valueOf(m.getNumeroMesa()));
             imc.getLbnombreMesero().setText("Mesero");
             
             stage.show();
@@ -285,47 +332,6 @@ public class InterfazAdministradorController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-    */
-    
-    private class ManejadorInfoMesa implements EventHandler<MouseEvent> {
-
-        public void handle(MouseEvent event) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("informacion_Mesas"));
-                Parent root = fxmlLoader.load();
-                Scene sc = new Scene(root);
-                Stage stage = new Stage();
-
-                Informacion_MesasController imc = fxmlLoader.getController();
-                for (Node n : panelSuelo.getChildren()) {
-                    if (event.getSource().equals(n)) {
-                        StackPane sp = (StackPane) n;
-                        Label lb = (Label) sp.getChildren().get(1);
-                        List<Mesa> mesas = Mesa.cargarMesasArchivo("mesas.txt");
-                        for (Mesa m : mesas) {
-                            if (String.valueOf(m.getNumeroMesa()).equals(lb.getText())) {
-                                imc.getLbcapacidadMesa().setText(String.valueOf(m.getCapacidad()));
-                                imc.getLbestadoMesa().setText(String.valueOf(m.getEstado()));
-                                imc.getLbnumeroMesa().setText(String.valueOf(m.getNumeroMesa()));
-                            }
-
-                        }
-                    }
-
-                }
-
-                imc.getLbnombreMesero().setText("Mesero");
-
-                stage.setScene(sc);
-                stage.show();
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-        }
-
     }
 }
 

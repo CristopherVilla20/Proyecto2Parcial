@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="414.0" style="-fx-border-color: brown; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2par.VentanaNuevaMesaController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Agregar Mesa">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane prefHeight="331.0" prefWidth="559.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="79.0" layoutY="58.0" text="Capacidad:" />
+            <Label layoutX="79.0" layoutY="122.0" text="Numero:" />
+            <TextField fx:id="txtCapacidadMesa" layoutX="167.0" layoutY="54.0" />
+            <TextField fx:id="txtNumeroMesa" layoutX="167.0" layoutY="118.0" />
+            <Button fx:id="btnAceptar" layoutX="111.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#agMesa" text="Aceptar" />
+            <Button fx:id="btnLimpiarAM" layoutX="224.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#limpiarDatos" text="Limpiar" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

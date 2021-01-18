@@ -23,11 +23,11 @@
 
 <TabPane focusTraversable="false" maxHeight="540.0" maxWidth="750.0" minHeight="540.0" minWidth="750.0" prefHeight="540.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2par.InterfazAdministradorController">
   <tabs>
-    <Tab text="Monitoreo">
+    <Tab fx:id="pestañaMonitoreo" text="Monitoreo">
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <Pane id="panelSueloRes" fx:id="panelSuelo" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
+                  <Pane id="panelSuelo" fx:id="panelSuelo" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0cfdd" height="348.0" layoutX="588.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" width="68.0" />
                         <Label layoutX="603.0" layoutY="172.0" rotate="270.0" text="COCINA" textFill="#282722">
@@ -63,11 +63,11 @@
             </BorderPane>
          </content>
     </Tab>
-      <Tab text="Diseño Plano">
+      <Tab fx:id="pestañaDiseño" text="Diseño Plano">
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <Pane id="panelSueloRes" fx:id="panelSuelo2" onMouseClicked="#añardirMesa" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
+                  <Pane id="panelSueloRes" fx:id="panelSuelo2" onMouseClicked="#abrirPanelAM" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a0a9b2" height="359.0" layoutX="577.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
                         <Label layoutX="589.0" layoutY="193.0" rotate="270.0" text="COCINA" textFill="RED">

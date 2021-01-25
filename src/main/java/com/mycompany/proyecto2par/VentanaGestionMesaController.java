@@ -40,7 +40,7 @@ public class VentanaGestionMesaController implements Initializable {
     @FXML
     private void modificarMesa(MouseEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaNuevaMesa.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("modificador_mesa.fxml"));
             Parent root = fxmlLoader.load();
             Scene sc = new Scene(root);
             Stage stage = new Stage();

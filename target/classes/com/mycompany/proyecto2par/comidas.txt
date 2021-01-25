@@ -2,7 +2,7 @@ Nombre,Precio,Tipo,Imagen
 Americano,3,Bebida,americano.jpg
 Bombon,2,Postre,bombon.jpg
 Brazo gitano,4,Postre,brazo_gitano.jpg
-Budín,2.50,Postre,budin.jpg
+Budin,2.50,Postre,budin.jpg
 Cafe con leche,1.50,Bebida,cafe_con_leche.jpg
 Cafe latte,2,Bebiba,cafe_latte.jpg
 Capuccino,3.50,Bebida,capuccino.jpg

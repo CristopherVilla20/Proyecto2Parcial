@@ -122,8 +122,13 @@ public class InterfazAdministradorController implements Initializable {
     private Tab pestañaMonitoreo;
     @FXML
     private Tab pestañaDiseño;
+    @FXML
+    private Label lbNumeroComensales;
     
+    @FXML
+    private Label lbTotalFacturado;
     
+    private StackPane spMesa;
     
    
     
@@ -215,6 +220,7 @@ public class InterfazAdministradorController implements Initializable {
                             }
                             else {
                                 try {
+                                    spMesa = (StackPane)event.getSource();
                                     FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaGestionMesa.fxml"));
                                     Parent root = fxmlLoader.load();
                                     Scene sc = new Scene(root);
@@ -227,13 +233,21 @@ public class InterfazAdministradorController implements Initializable {
                                 }
                             }
                         }
-                );
+                ); st.setOnMouseDragged(
+                        (MouseEvent event) -> { 
+                            
+                    
+                });
             }
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
+    }
+
+    public StackPane getSpMesa() {
+        return spMesa;
     }
 
     
@@ -324,10 +338,11 @@ public class InterfazAdministradorController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(sc);
             Informacion_MesasController imc = fxmlLoader.getController();
-            imc.getLbcapacidadMesa().setText("Capacidad:"+String.valueOf(m.getCapacidad()));
-            imc.getLbestadoMesa().setText("Estado:"+String.valueOf(m.getEstado()));
-            imc.getLbnumeroMesa().setText("Numero de mesa:"+String.valueOf(m.getNumeroMesa()));
-            imc.getLbnombreMesero().setText("Mesero");
+            imc.getLbcapacidadMesa().setText("Capacidad: "+String.valueOf(m.getCapacidad()));          
+            String estado= (m.getEstado()) ? " Ocupado":" Disponible";           
+            imc.getLbestadoMesa().setText("Estado: "+ estado);
+            imc.getLbnumeroMesa().setText("Numero de mesa: "+String.valueOf(m.getNumeroMesa()));
+            imc.getLbnombreMesero().setText("Mesero: ");
             
             stage.show();
             

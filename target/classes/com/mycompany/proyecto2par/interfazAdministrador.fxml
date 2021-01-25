@@ -42,12 +42,12 @@
                <bottom>
                   <VBox focusTraversable="true" prefHeight="97.0" prefWidth="750.0" spacing="10.0" style="-fx-background-color: #eaeaea; -fx-border-color: #a0a9b2; -fx-border-width: 3;" BorderPane.alignment="CENTER">
                      <children>
-                        <Label text="Numero de comensales:">
+                        <Label fx:id="lbNumeroComensales" text="Numero de comensales:">
                            <font>
                               <Font name="Arial Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Total facturado:">
+                        <Label fx:id="lbTotalFacturado" text="Total facturado:">
                            <font>
                               <Font name="Arial Bold" size="24.0" />
                            </font>

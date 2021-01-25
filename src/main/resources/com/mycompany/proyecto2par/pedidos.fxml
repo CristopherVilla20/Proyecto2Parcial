@@ -136,7 +136,7 @@
                                  <children>
                                     <ImageView fitHeight="80.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@budín.jpg" />
+                                          <Image url="@budin.jpg" />
                                        </image>
                                     </ImageView>
                                     <Label text="Budin" />
@@ -249,7 +249,7 @@
                                  <children>
                                     <ImageView fitHeight="80.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@bombon%20.jpg" />
+                                          <Image url="@bombon.jpg" />
                                        </image>
                                     </ImageView>
                                     <Label text="Bombom" />

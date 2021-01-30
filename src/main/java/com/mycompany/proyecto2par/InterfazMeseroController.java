@@ -47,7 +47,7 @@ public class InterfazMeseroController implements Initializable {
         lbMesero.setText("Mesero: "+App.getUser().getNombre()); 
         
          try {
-            List<Mesa> mesas = Mesa.cargarMesasArchivo("mesas.txt");
+            List<Mesa> mesas = MesaData.cargarMesasArchivo();
             for (Mesa m : mesas) {
                 Circle c;
                 //true esta ocupada

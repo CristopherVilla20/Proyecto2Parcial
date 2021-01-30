@@ -54,7 +54,7 @@ public class Modificador_mesaController implements Initializable {
             
         Label lb = (Label)iac.getSpMesa().getChildren().get(1); 
        
-        List<Mesa> lmesa = Mesa.cargarMesasArchivo("mesas.txt");
+        List<Mesa> lmesa = MesaData.cargarMesasArchivo();
         for (Mesa m : lmesa){
             if (m.getNumeroMesa().equals(lb.getText())){
                 m.setNumeroMesa(numero);

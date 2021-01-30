@@ -12,20 +12,23 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Stalin Garcia
  */
-public class MenuData {
+public class MesaData {
     
-    static String ruta = "platos.txt";
+    static String ruta = "mesas.txt";
 
-    public static ArrayList<Menu> leerMenus() throws IOException {
-        ArrayList<Menu> m = new ArrayList<>();
+    public static ArrayList<Mesa> cargarMesasArchivo() throws IOException {
+        ArrayList<Mesa> mesas = new ArrayList<>();
         //Usamos la clase BufferedReader para leer archivos de texto
         try {
             URL u = App.class.getResource(ruta);
@@ -35,10 +38,13 @@ public class MenuData {
                 //leemos linea a linea hasta llegar la final del archivo
                 bf.readLine();
                 while ((linea = bf.readLine()) != null) {
-                    //dividir la en partes 
-                    String[] partes = linea.split(";");
-                    m.add(new Menu(partes[0], partes[1], Double.parseDouble(partes[2])));
+                    String[] partes = linea.split(",");
+                    String[] ubi = partes[2].split(":");
+                    UbicacionesMesas ubicacion = new UbicacionesMesas(Double.valueOf(ubi[0]),Double.valueOf(ubi[1]));
+                    Mesa mesa = new Mesa(partes[0],Integer.parseInt(partes[1]),ubicacion,Boolean.parseBoolean(partes[3]),Integer.parseInt(partes[4]));             
+                    mesas.add(mesa);
                 }
+              
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
                 throw ex;
@@ -50,16 +56,18 @@ public class MenuData {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        return m;
+        return mesas;
     }
     
-    public static void registrarMenu(Menu m) throws IOException {
-
+    
+    public static void registrarMesa(Mesa m) throws IOException {
+        
+    
         try{
             URL u = App.class.getResource(ruta);
             File file = new File(u.toURI());
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(file,true))){
-                String linea = m.getTipo()+";"+m.getNombre()+";"+m.getPrecio();
+                String linea = m.getNumeroMesa()+","+m.getCapacidad()+","+m.getUbicacion()+","+m.getEstado()+","+m.getTamanio();
                 bw.write(linea);
                 bw.newLine();
             }
@@ -67,5 +75,4 @@ public class MenuData {
             ex.printStackTrace();
         }
     }  
-   
 }

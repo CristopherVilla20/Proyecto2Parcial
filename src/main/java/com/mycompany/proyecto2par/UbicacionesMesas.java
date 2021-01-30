@@ -12,6 +12,7 @@ package com.mycompany.proyecto2par;
 public class UbicacionesMesas {
     private double x;
     private double y;
+    
 
     public UbicacionesMesas(double x, double y) {
         this.x = x;
@@ -32,5 +33,10 @@ public class UbicacionesMesas {
 
     public void setY(double y) {
         this.y = y;
+    }
+    
+    @Override
+    public String toString() {
+        return x+":"+y;
     }
 }

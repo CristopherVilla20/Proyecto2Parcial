@@ -5,3 +5,4 @@ Numero,Capacidad,Ubicacion,Estado,Tamanio
 4,7,106:209,true,45
 5,7,281:231,false,45
 7,10,413:118,true,55
+666,75,465.6:328.0,false,30

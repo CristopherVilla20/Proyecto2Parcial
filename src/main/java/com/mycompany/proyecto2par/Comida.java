@@ -61,31 +61,6 @@ public class Comida {
         this.tipo = tipo;
     }
     
-    /*
-    public static List<Comida> cargarComidasArchivo(String nombre_archivo) throws IOException{
-        
-        String ruta = "comidas.txt";
-        List<Comida> comidas = new ArrayList<>();
-        try(InputStream input = App.class.getResource(ruta).openStream();
-                BufferedReader bf = new BufferedReader(
-                                    new InputStreamReader(input,"UTF-8"))){
-            String linea;
-            bf.readLine();
-            while((linea = bf.readLine())!=null){
-                System.out.println(linea);
-                String[] p = linea.split(",");
-                Comida comida = new Comida(p[0],Double.parseDouble(p[1]),p[2],p[3]);
-                System.out.println("hola");
-                comidas.add(comida);
-            }         
-        }  catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
-        }
-        return comidas;
-    }
-    */
-
     @Override
     public String toString() {
         return "Comida{" + "nombre=" + nombre + ", precio=" + precio + ", tipo=" + tipo + ", imagen=" + imagen + '}';

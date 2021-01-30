@@ -71,29 +71,6 @@ public class Mesa {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-    public static List<Mesa> cargarMesasArchivo(String nombre_archivo) throws IOException{
-        
-        String ruta = "mesas.txt";
-        List<Mesa> mesas = new ArrayList<>();
-        try(InputStream input = App.class.getResource(ruta).openStream();
-                BufferedReader bf = new BufferedReader(
-                                    new InputStreamReader(input,"UTF-8"))){
-            String linea;
-            bf.readLine();
-            while((linea = bf.readLine())!=null){
-                String[] p = linea.split(",");
-                String[] u = p[2].split(":");
-                UbicacionesMesas ubicacion = new UbicacionesMesas(Double.valueOf(u[0]),Double.valueOf(u[1]));
-                Mesa mesa = new Mesa(p[0],Integer.parseInt(p[1]),ubicacion,Boolean.parseBoolean(p[3]),Integer.parseInt(p[4]));             
-                mesas.add(mesa);
-            }         
-        }  catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
-        }
-        return mesas;
-    }
 
     void setCapacidad(String capacidad) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

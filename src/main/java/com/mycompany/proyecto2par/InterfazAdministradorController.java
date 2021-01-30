@@ -53,9 +53,6 @@ import javafx.scene.control.Tab;
  * @author Stalin Garcia
  */
 public class InterfazAdministradorController implements Initializable {
-    
-    private double x;
-    private double y;
 
     @FXML
     private Button btnConfirmacion;
@@ -171,20 +168,24 @@ public class InterfazAdministradorController implements Initializable {
                 ImageView imgv = new ImageView(new Image(inputImg));
                 contenedor.getChildren().add(imgv);
                 }catch(Exception ex){
-                    System.out.println(c);
+                    //System.out.println(c);
                     ex.printStackTrace();
                 }
                 Label lb1 = new Label(c.getNombre());
                 Label lb2 = new Label("$ " +String.valueOf(c.getPrecio()));
                 contenedor.getChildren().addAll(lb1,lb2);
                 panelComidas.getChildren().add(contenedor);
-            }
-            
-            
-       
-         
+            }       
     }
-
+    
+    public Pane getPanelSuelo(){
+        return panelSuelo;
+    }
+    
+    public Pane getPanelSuelo2(){
+        return panelSuelo2;
+    }
+    
     @FXML
     private void cerrarSesion(MouseEvent event) {
         App.setUser(null);
@@ -195,7 +196,7 @@ public class InterfazAdministradorController implements Initializable {
     
     public void ponerMesas(Pane panel) {
         try {
-            List<Mesa> mesas = Mesa.cargarMesasArchivo("mesas.txt");
+            List<Mesa> mesas = MesaData.cargarMesasArchivo();
             for (Mesa m : mesas) {
                 Circle c;
                 //true esta ocupada
@@ -281,17 +282,6 @@ public class InterfazAdministradorController implements Initializable {
         } 
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public Pane getPanelSuelo2() {
-        return panelSuelo2;
-    }
     
 
     @FXML
@@ -312,10 +302,11 @@ public class InterfazAdministradorController implements Initializable {
         //panelSuelo2.getChildren();
         if (!(event.getSource() instanceof StackPane)) {
             try {
-                this.x = event.getX();
-                this.y = event.getY();
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaNuevaMesa.fxml"));
                 Parent root = fxmlLoader.load();
+                VentanaNuevaMesaController vNmC = fxmlLoader.getController();
+                vNmC.setX(event.getX());
+                vNmC.setY(event.getY());
                 Scene sc = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(sc);

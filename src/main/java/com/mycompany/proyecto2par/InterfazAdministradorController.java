@@ -195,54 +195,49 @@ public class InterfazAdministradorController implements Initializable {
 
     
     public void ponerMesas(Pane panel) {
-        try {
-            List<Mesa> mesas = MesaData.cargarMesasArchivo();
-            for (Mesa m : mesas) {
-                Circle c;
-                //true esta ocupada
-                if (m.getEstado()) {
-                    c = new Circle(m.getTamanio(), Color.RED);
-                } else {
-                    c = new Circle(m.getTamanio(), Color.GREEN);
-
-                }
-                Label l = new Label(m.getNumeroMesa());
-                StackPane st = new StackPane();
-                st.getChildren().addAll(c, l);
-
-                panel.getChildren().add(st);
-                st.setLayoutX(m.getUbicacion().getX());
-                st.setLayoutY(m.getUbicacion().getY());
-                st.setOnMouseClicked(
-                        (MouseEvent event) -> {
-                            event.consume();
-                            if (panel.getId().equals("panelSuelo")) {
-                                mostrarInformacionMesa(m);
-                            }
-                            else {
-                                try {
-                                    spMesa = (StackPane)event.getSource();
-                                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaGestionMesa.fxml"));
-                                    Parent root = fxmlLoader.load();
-                                    Scene sc = new Scene(root);
-                                    Stage stage = new Stage();
-                                    stage.setScene(sc);
-                                    stage.setResizable(false);
-                                    stage.show();
-                                } catch (IOException ex) {
-                                    ex.printStackTrace();
-                                }
+        List<Mesa> mesas = MesaData.cargarMesasArchivo();
+        for (Mesa m : mesas) {
+            Circle c;
+            //true esta ocupada
+            if (m.getEstado()) {
+                c = new Circle(m.getTamanio(), Color.RED);
+            } else {
+                c = new Circle(m.getTamanio(), Color.GREEN);
+                
+            }
+            Label l = new Label(m.getNumeroMesa());
+            StackPane st = new StackPane();
+            st.getChildren().addAll(c, l);
+            
+            panel.getChildren().add(st);
+            st.setLayoutX(m.getUbicacion().getX());
+            st.setLayoutY(m.getUbicacion().getY());
+            st.setOnMouseClicked(
+                    (MouseEvent event) -> {
+                        event.consume();
+                        if (panel.getId().equals("panelSuelo")) {
+                            mostrarInformacionMesa(m);
+                        }
+                        else {
+                            try {
+                                spMesa = (StackPane)event.getSource();
+                                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaGestionMesa.fxml"));
+                                Parent root = fxmlLoader.load();
+                                Scene sc = new Scene(root);
+                                Stage stage = new Stage();
+                                stage.setScene(sc);
+                                stage.setResizable(false);
+                                stage.show();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
                             }
                         }
-                ); st.setOnMouseDragged(
-                        (MouseEvent event) -> { 
-                            
-                    
-                });
-            }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+                    }
+            ); st.setOnMouseDragged(
+                    (MouseEvent event) -> {
+                        
+                        
+                    });
         }
 
     }

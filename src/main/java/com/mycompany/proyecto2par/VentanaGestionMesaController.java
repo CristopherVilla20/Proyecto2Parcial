@@ -6,6 +6,7 @@
 package com.mycompany.proyecto2par;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -67,16 +68,19 @@ public class VentanaGestionMesaController implements Initializable {
     }
 
     @FXML
-    private void eliminarMesa(MouseEvent event) {
-        /*
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("interfazAdministrador.fxml"));
-        Parent root = fxmlLoader.load();
-        InterfazAdministradorController iac = fxmlLoader.getController();
-        //iac.getPanelSuelo().getChildren().remove(mesa);
-        //iac.getPanelSuelo2().getChildren().remove(mesa);
-        List<Mesa> mesas = MesaData.cargarMesasArchivo();
-        //mesas.remove(mesa);
-*/    
+    private void eliminarMesa(MouseEvent event) throws IOException {
+        try {
+            Object MouseEvent = event.getSource();
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("interfazAdministrador.fxml"));
+            Parent root = fxmlLoader.load();
+            InterfazAdministradorController iac = fxmlLoader.getController();
+            iac.getPanelSuelo().getChildren().remove(mesa);
+            iac.getPanelSuelo2().getChildren().remove(mesa);
+            MesaData.eliminarMesa(mesa);
+        } catch (URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+    
     }
     
 }

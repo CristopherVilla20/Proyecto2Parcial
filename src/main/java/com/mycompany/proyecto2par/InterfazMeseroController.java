@@ -46,45 +46,41 @@ public class InterfazMeseroController implements Initializable {
         // TODO
         lbMesero.setText("Mesero: "+App.getUser().getNombre()); 
         
-         try {
-            List<Mesa> mesas = MesaData.cargarMesasArchivo();
-            for (Mesa m : mesas) {
-                Circle c;
-                //true esta ocupada
-                if (m.getEstado()) {
-                    c = new Circle(m.getTamanio(), Color.RED);
-                } else {
-                    c = new Circle(m.getTamanio(), Color.GREEN);
-
-                }
-                Label l = new Label(m.getNumeroMesa());
-                StackPane st = new StackPane();
-                st.getChildren().addAll(c, l);
-
-                panelSuelo.getChildren().add(st);
-                st.setLayoutX(m.getUbicacion().getX());
-                st.setLayoutY(m.getUbicacion().getY());
+        List<Mesa> mesas = MesaData.cargarMesasArchivo();
+        for (Mesa m : mesas) {
+            Circle c;
+            //true esta ocupada
+            if (m.getEstado()) {
+                c = new Circle(m.getTamanio(), Color.RED);
+            } else {
+                c = new Circle(m.getTamanio(), Color.GREEN);
                 
-                st.setOnMouseClicked((MouseEvent event)->{
-                    try {
-                        FXMLLoader fxml = new FXMLLoader(App.class.getResource("pedidos.fxml"));
-                        Parent root = fxml.load();
-                        Scene sc = new Scene(root);
-                        Stage stage = new Stage();
-                        stage.setScene(sc);
-                        stage.show();
-                        
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                    
-                
-                });
-
             }
-         }catch(IOException ex){
-             ex.printStackTrace();
-         }
+            Label l = new Label(m.getNumeroMesa());
+            StackPane st = new StackPane();
+            st.getChildren().addAll(c, l);
+            
+            panelSuelo.getChildren().add(st);
+            st.setLayoutX(m.getUbicacion().getX());
+            st.setLayoutY(m.getUbicacion().getY());
+            
+            st.setOnMouseClicked((MouseEvent event)->{
+                try {
+                    FXMLLoader fxml = new FXMLLoader(App.class.getResource("pedidos.fxml"));
+                    Parent root = fxml.load();
+                    Scene sc = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(sc);
+                    stage.show();
+                    
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                
+                
+            });
+            
+        }
 
     }    
 

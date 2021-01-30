@@ -26,9 +26,10 @@ import java.util.List;
 public class MesaData {
     
     static String ruta = "mesas.txt";
-
-    public static ArrayList<Mesa> cargarMesasArchivo() throws IOException {
+    //static ArrayList<Mesa> mesas = cargarMesasArchivo() ;
+    public static ArrayList<Mesa> cargarMesasArchivo() {
         ArrayList<Mesa> mesas = new ArrayList<>();
+       
         //Usamos la clase BufferedReader para leer archivos de texto
         try {
             URL u = App.class.getResource(ruta);
@@ -60,19 +61,41 @@ public class MesaData {
     }
     
     
-    public static void registrarMesa(Mesa m) throws IOException {
+    public static void registrarMesa(Mesa m) throws IOException  {
         
     
-        try{
+        try{ 
             URL u = App.class.getResource(ruta);
             File file = new File(u.toURI());
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(file,true))){
                 String linea = m.getNumeroMesa()+","+m.getCapacidad()+","+m.getUbicacion()+","+m.getEstado()+","+m.getTamanio();
+                
                 bw.write(linea);
                 bw.newLine();
+                
             }
+            
         } catch (URISyntaxException ex) {
             ex.printStackTrace();
         }
     }  
+    
+    public static void eliminarMesa(Mesa m) throws URISyntaxException, IOException {
+
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        List<Mesa> mesas = cargarMesasArchivo();
+        mesas.remove(m);
+        try ( BufferedWriter bwr = new BufferedWriter(new FileWriter(file, false));) {
+            bwr.write("Numero,Capacidad,Ubicacion,Estado,Tamanio");
+            bwr.newLine();
+            for (Mesa mesa : mesas) {
+                String linea = mesa.getNumeroMesa() + "," + mesa.getCapacidad() + "," + mesa.getUbicacion() + "," + mesa.getEstado() + "," + mesa.getTamanio();
+                bwr.write(linea);
+                bwr.newLine();
+            }
+
+        }
+    }
+
 }

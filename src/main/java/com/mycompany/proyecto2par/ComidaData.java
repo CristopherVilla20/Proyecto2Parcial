@@ -6,6 +6,8 @@
 package com.mycompany.proyecto2par;
 
 
+import static com.mycompany.proyecto2par.MesaData.mesas;
+import static com.mycompany.proyecto2par.MesaData.ruta;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,6 +29,7 @@ import java.util.List;
 public class ComidaData {
     
     static String ruta = "comidas.txt";
+    static ArrayList<Comida> comidas = cargarComidasArchivo();
 
     public static ArrayList<Comida> cargarComidasArchivo()  {
         ArrayList<Comida> c = new ArrayList<>();
@@ -60,7 +63,7 @@ public class ComidaData {
      
     public static void registrarComida (Comida c) throws IOException {
         
-        
+        comidas.add(c);
         try{
             URL u = App.class.getResource(ruta);
             File file = new File(u.toURI());
@@ -73,4 +76,26 @@ public class ComidaData {
             ex.printStackTrace();
         }
     }  
+    
+     public static void eliminarComida(Comida c) throws URISyntaxException, IOException {
+
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        //"src/main/resources/com/mycompany/proyecto2par/mesas.txt"
+        //System.out.println(mesas);
+        comidas.remove(c);
+        //System.out.println(mesas);
+        
+        
+        try ( BufferedWriter bwr = new BufferedWriter(new FileWriter(file, false));) {
+            bwr.write("Nombre,Precio,Tipo,Imagen");
+            bwr.newLine();
+            for (Mesa mesa : mesas) {
+                String linea = c.getNombre()+","+c.getPrecio()+","+c.getTipo()+","+c.getImagen();
+                bwr.write(linea);
+                bwr.newLine();
+            }
+
+        }
+    }
 }

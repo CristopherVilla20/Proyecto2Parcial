@@ -85,6 +85,7 @@ public class MesaData {
         mesas.remove(m);
         //System.out.println(mesas);
         
+        
         try ( BufferedWriter bwr = new BufferedWriter(new FileWriter(file, false));) {
             bwr.write("Numero,Capacidad,Ubicacion,Estado,Tamanio");
             bwr.newLine();

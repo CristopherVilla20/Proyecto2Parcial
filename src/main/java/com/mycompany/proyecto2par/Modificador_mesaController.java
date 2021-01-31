@@ -27,10 +27,7 @@ import javafx.scene.layout.StackPane;
  */
 public class Modificador_mesaController implements Initializable {
 
-    private StackPane spMesa;
-    
-    private Mesa mesa;
-    
+    private Mesa mesa;  
     @FXML
     private TextField txtNumeroMesa;
     @FXML
@@ -50,10 +47,6 @@ public class Modificador_mesaController implements Initializable {
     }    
     
     //SETTERS
-    public void setSpMesa(StackPane spMesa) {
-        this.spMesa = spMesa;
-    }
-
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
     }
@@ -68,35 +61,32 @@ public class Modificador_mesaController implements Initializable {
         mesa = vgmc.getMesa();
 */
         try{
+            System.out.println(mesa);
             String numero = txtNumeroMesa.getText();
             String capacidad = txtCapacidadMesa.getText();
         
-            Label lb = (Label) spMesa.getChildren().get(1);
-            String nuMesa = lb.getText();
-            System.out.println(nuMesa);
-            //lb.setText(numero);
-        
-            //List<Mesa> mesasArchivo = MesaData.mesas;
-            for(Mesa m : MesaData.mesas){
-                //System.out.println("hola");
-                if(m.getNumeroMesa().equals(nuMesa)){
-                    setMesa(m);
+            //Label lb = (Label) spMesa.getChildren().get(1);
+            //String nuMesa = lb.getText();
+            //System.out.println(nuMesa);                            
+            
+            for(Mesa m : MesaData.mesas){              
+                if(m.getNumeroMesa().equals(mesa.getNumeroMesa())){
+                    //setMesa(m);
                     MesaData.eliminarMesa(m);
+                    m.setCapacidad(Integer.parseInt(capacidad));
+                    m.setNumeroMesa(numero);
+                    MesaData.registrarMesa(m);
+                    
                 }
-                else{
-                    System.out.println("valiste v");
-                }
+                
             }
-            mesa.setCapacidad(Integer.parseInt(capacidad));
-            mesa.setNumeroMesa(numero);
-            MesaData.registrarMesa(mesa);
+          
         }
         catch(Exception ex){
             System.out.println(mesa);
             ex.printStackTrace();
         }
-        //m.setCapacidad(Integer.parseInt(capacidad));
-        //m.setNumeroMesa(numero);
+        
         
         
     }

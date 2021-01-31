@@ -240,15 +240,15 @@ public class InterfazAdministradorController implements Initializable {
                         if (panel.getId().equals("panelSuelo")) {
                             mostrarInformacionMesa(m);
                         }
-                        else {
+                        else{
                             try {
-                                
+                                /*
                                 FXMLLoader fxmlLoader2 = new FXMLLoader(App.class.getResource("modificador_mesa.fxml"));
                                 Parent root2 = fxmlLoader2.load();
                                 Modificador_mesaController mmc = fxmlLoader2.getController();
                                 //mmc.setMesa(m);
                                 mmc.setSpMesa((StackPane)event.getSource());
-                                
+                                */
                                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaGestionMesa.fxml"));
                                 Parent root = fxmlLoader.load();
                                 VentanaGestionMesaController vgmc = fxmlLoader.getController();
@@ -258,19 +258,21 @@ public class InterfazAdministradorController implements Initializable {
                                 Stage stage = new Stage();
                                 stage.setScene(sc);
                                 stage.setResizable(false);
-                                stage.show();
-                                
+                                stage.show();                                
                                 
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
                         }
                     }
-            ); st.setOnMouseDragged(
+            ); 
+            /*
+            st.setOnMouseDragged(
                     (MouseEvent event) -> {
                         
                         
                     });
+        */
         }
 
     }
@@ -365,6 +367,52 @@ public class InterfazAdministradorController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void agregarPlato(MouseEvent event) {
+        try {
+            String nombre =txtNombreAgregar.getText();
+            double  precio = Double.parseDouble(txtPrecioAgregar.getText());
+            String tipo = cbTipoComidaA.getValue();
+            String ruta = txtRutaAgregar.getText();
+            
+            Comida c = new Comida(nombre,precio,tipo,ruta);
+            ComidaData.registrarComida(c);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    
+    }
+
+    @FXML
+    private void limpiarAgregarPlato(MouseEvent event) {
+        txtNombreAgregar.clear();
+        txtPrecioAgregar.clear();
+        txtRutaAgregar.clear();
+                
+    }
+
+    @FXML
+    private void modificarPlato(MouseEvent event) {
+        String nombre = txtNombreModi.getText();
+        String nombreNuevo = txtNuevoNombreModi.getText();
+        String tipo = cbTipoComidaM.getValue();
+        double precio = Double.parseDouble(txtPrecioModi.getText());
+        String rutaImg = txtRutaImgModi.getText();
+        for(Comida c: ComidaData.comidas){
+            if(c.getNombre().equals(nombre)){
+                
+            }
+        }
+    }
+
+    @FXML
+    private void limpiarModificarPlato(MouseEvent event) {
+        txtNombreModi.clear();
+        txtNuevoNombreModi.clear();
+        txtPrecioModi.clear();
+        txtRutaImgModi.clear();
     }
 
     class ComensalesRunnable implements Runnable {

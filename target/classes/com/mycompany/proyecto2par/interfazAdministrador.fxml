@@ -107,8 +107,8 @@
                                     <TextField fx:id="txtNombreAgregar" layoutX="146.0" layoutY="12.0" />
                                     <TextField fx:id="txtPrecioAgregar" layoutX="145.0" layoutY="46.0" />
                                     <TextField fx:id="txtRutaAgregar" layoutX="145.0" layoutY="126.0" />
-                                    <Button fx:id="btnAgregar" layoutX="92.0" layoutY="162.0" mnemonicParsing="false" text="Agregar" />
-                                    <Button fx:id="btnLimpiarA" layoutX="195.0" layoutY="162.0" mnemonicParsing="false" text="Limpiar" />
+                                    <Button fx:id="btnAgregar" layoutX="92.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#agregarPlato" text="Agregar" />
+                                    <Button fx:id="btnLimpiarA" layoutX="195.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#limpiarAgregarPlato" text="Limpiar" />
                                     <ComboBox fx:id="cbTipoComidaA" layoutX="146.0" layoutY="86.0" prefWidth="150.0" />
                                     <Label layoutX="26.0" layoutY="90.0" text="Tipo:" />
                                  </children>
@@ -129,8 +129,8 @@
                                     <ComboBox fx:id="cbTipoComidaM" layoutX="154.0" layoutY="69.0" prefWidth="150.0" />
                                     <Label layoutX="25.0" layoutY="129.0" text="Ruta imagen:" />
                                     <TextField fx:id="txtRutaImgModi" layoutX="155.0" layoutY="129.0" />
-                                    <Button fx:id="btnModificar" layoutX="102.0" layoutY="162.0" mnemonicParsing="false" text="Modificar" />
-                                    <Button fx:id="btnLimpiarM" layoutX="212.0" layoutY="162.0" mnemonicParsing="false" text="Limpiar" />
+                                    <Button fx:id="btnModificar" layoutX="102.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#modificarPlato" text="Modificar" />
+                                    <Button fx:id="btnLimpiarM" layoutX="212.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#limpiarModificarPlato" text="Limpiar" />
                                  </children>
                               </AnchorPane>
                            </content>

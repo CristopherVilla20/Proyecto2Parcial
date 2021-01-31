@@ -1,15 +1,15 @@
 Nombre,Precio,Tipo,Imagen
-Americano,3,Bebida,americano.jpg
-Bombon,2,Postre,bombon.jpg
-Brazo gitano,4,Postre,brazo_gitano.jpg
-Budin,2.50,Postre,budin.jpg
-Cafe con leche,1.50,Bebida,cafe_con_leche.jpg
-Cafe latte,2,Bebiba,cafe_latte.jpg
-Capuccino,3.50,Bebida,capuccino.jpg
-Dulce de coco,2,Postre,dulce_de_coco.jpg
-Espresso,2,Bebida,espresso.jpg
-Flan,1.50,Postre,flan.jpg
-Macchiato,2,Bebida,macchiato.jpg
-Mozaico,3,Postre,mozaico.jpg
-Rollo de canela,4,Postre,rollo_canela.jpg
-Torta de chocolate,3.50,Postre,torta_chocolate.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+Mozaico,3.0,Postre,mozaico.jpg
+moza,1.0,Postre,mozaico.jpg

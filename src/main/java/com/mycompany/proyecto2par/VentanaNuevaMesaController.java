@@ -69,7 +69,7 @@ public class VentanaNuevaMesaController implements Initializable {
             Circle c = new Circle(35,Color.GREEN);
             Label lb1 = new Label(txtNumeroMesa.getText());
             StackPane sp = new StackPane(c,lb1);
-            iac.getPanelSuelo2().getChildren().add(sp);
+            iac.getPanelSuelo2().getChildren().add(sp);            
             //iac.ponerMesas(iac.getPanelSuelo());
             //iac.ponerMesas(iac.getPanelSuelo2());     
         }catch(Exception ex){

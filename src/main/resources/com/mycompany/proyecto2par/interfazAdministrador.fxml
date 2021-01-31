@@ -68,7 +68,7 @@
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <Pane id="panelSueloRes" fx:id="panelSuelo2" onMouseClicked="#abrirPanelAM" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
+                  <Pane id="panelSuelo2" fx:id="panelSuelo2" onMouseClicked="#abrirPanelAM" prefHeight="393.0" prefWidth="750.0" stylesheets="@estiloSuelo.css" BorderPane.alignment="CENTER">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a0a9b2" height="359.0" layoutX="577.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
                         <Label layoutX="589.0" layoutY="193.0" rotate="270.0" text="COCINA" textFill="RED">

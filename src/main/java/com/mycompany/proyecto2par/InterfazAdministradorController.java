@@ -5,8 +5,12 @@
  */
 package com.mycompany.proyecto2par;
 
+
+
+import static com.mycompany.proyecto2par.MesaData.cargarMesasArchivo;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,7 +50,9 @@ import java.text.DateFormat;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 import javafx.application.Platform;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Tab;
+import javafx.scene.effect.Light.Point;
 
 /**
  * FXML Controller class
@@ -59,6 +65,18 @@ public class InterfazAdministradorController implements Initializable {
     
     private int totalComensales;
     
+    private double initX;
+    
+    private double initY;
+    
+    private Point2D posicionInitMouse;
+    
+    private Point offset;
+    
+    private String nombrePlato;
+    
+    private ArrayList<Comida> listaComidasHilo = new ArrayList<>();
+     
     @FXML
     private Button btnConfirmacion;
     @FXML
@@ -153,6 +171,13 @@ public class InterfazAdministradorController implements Initializable {
         Thread t3 = new Thread(new ActualizarMesasRunnable());
         t3.start();
         
+        //Thread t4 = new Thread(new ActualizarListaMesas());
+        //t4.start();
+        
+        Thread t5 = new Thread(new ActualizarComidasRunnable());
+        t5.start();    
+        
+        
     //VENTAS
 
         //Ubicar ventas (VentasReporte)
@@ -175,16 +200,18 @@ public class InterfazAdministradorController implements Initializable {
         cbTipoComidaA.getItems().addAll("Postre", "Bebida");
         cbTipoComidaM.getItems().addAll("Postre", "Bebida");
        
-        //Ubicar comida (Gestion Menu)
+        //Ubicar comida (Gestion Menu) 
+        ubicarComida();
+        /*
         List<Comida> comidas = ComidaData.cargarComidasArchivo();
-         
+        
         for(Comida c: comidas){
             VBox contenedor = new VBox();
             try{
                 InputStream inputImg = App.class.getResource(c.getImagen()).openStream();           
                 ImageView imgv = new ImageView(new Image(inputImg));
                 contenedor.getChildren().add(imgv);
-                }
+    }
             catch(Exception ex){
                     //System.out.println(c);
                     ex.printStackTrace();
@@ -193,7 +220,8 @@ public class InterfazAdministradorController implements Initializable {
             Label lb2 = new Label("$ " +String.valueOf(c.getPrecio()));
             contenedor.getChildren().addAll(lb1,lb2);
             panelComidas.getChildren().add(contenedor);
-        }       
+        }
+        */
     }
     
     //GETTERS
@@ -266,16 +294,79 @@ public class InterfazAdministradorController implements Initializable {
                         }
                     }
             ); 
+            //solo para el 2do panel
             /*
-            st.setOnMouseDragged(
+            if(panel.getId().equals("panelSuelo2")){
+                
+                st.setOnMousePressed((MouseEvent event) -> {
+                    initX = st.getLayoutX();
+                    initY = st.getLayoutY();
+                    posicionInitMouse = new Point2D(event.getSceneX(),event.getSceneY());
+                });
+                
+                st.setOnMouseDragged((MouseEvent event)->{
+                    
+                    double dragX = event.getSceneX() - posicionInitMouse.getX();
+                    double dragY= event.getSceneY() - posicionInitMouse.getY();
+                    
+                    double newXPosition = initX + dragX;
+                    double newYPosition = initY + dragY;
+                    
+                    st.setLayoutX(newXPosition);
+                    st.setLayoutY(newYPosition);
+                    UbicacionesMesas uM = new UbicacionesMesas(newXPosition,newYPosition);
+                    try{
+                    MesaData.eliminarMesa(m);
+                    
+                    m.setUbicacion(uM);
+                    MesaData.registrarMesa(m);
+                    
+                    }
+                    catch(Exception ex){
+                        System.out.println("Aqui se esta valiendo pistola");
+                        System.out.println(ex.getMessage());                    
+                    }
+                    //double width_area = panel.widthProperty().doubleValue();
+                    //double height_area = panel.heightProperty().doubleValue();
+                    /*
+                    if((newXPosition >= st.getWidth()/2) && (newXPosition <= width_area - st.getWidth()/2)){
+                        st.setLayoutX(newXPosition);
+                    }
+                    if((newYPosition >= st.getHeight()/2) && (newYPosition <= height_area - st.getHeight()/2)){
+                        st.setLayoutY(newYPosition);
+                    }
+                    
+                });
+                
+                st.setOnMouseReleased((MouseEvent event)->{
+                    panel.getChildren().remove(st);
+                });
+                /*
+                
+                st.setOnMouseDragged(
                     (MouseEvent event) -> {
-                        
-                        
+                        event.consume();
+                        try{
+                            st.setLayoutX(event.getSceneX());
+                            st.setLayoutY(event.getSceneY());
+                            UbicacionesMesas uM = new UbicacionesMesas(event.getSceneX(),event.getSceneY());                            
+                            MesaData.eliminarMesa(m);
+                            m.setUbicacion(uM);
+                            MesaData.registrarMesa(m);
+                        } 
+                        catch(Exception ex){
+                            System.out.println(ex.getMessage());                        
+                        }
                     });
-        */
+                */
+            
+                }
+            
+        
+            
         }
 
-    }
+    
         
 
     
@@ -371,18 +462,37 @@ public class InterfazAdministradorController implements Initializable {
 
     @FXML
     private void agregarPlato(MouseEvent event) {
-        try {
-            String nombre =txtNombreAgregar.getText();
-            double  precio = Double.parseDouble(txtPrecioAgregar.getText());
-            String tipo = cbTipoComidaA.getValue();
-            String ruta = txtRutaAgregar.getText();
-            
-            Comida c = new Comida(nombre,precio,tipo,ruta);
-            ComidaData.registrarComida(c);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+
+        String nombre = txtNombreAgregar.getText();
+        this.nombrePlato = nombre;
+        double precio = Double.parseDouble(txtPrecioAgregar.getText());
+        String tipo = cbTipoComidaA.getValue();
+        String ruta = txtRutaAgregar.getText();
+        Comida c = new Comida(nombre, precio, tipo, ruta);
+        //Thread t5 = new Thread(new ActualizarComidasRunnable());
+        //t5.start();    
+        List<Comida> comidas = ComidaData.comidas;
+        if (!comidas.contains(c)) {
+            try {
+                VBox contenedor = new VBox();
+                try {
+                    InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
+                    ImageView imgv = new ImageView(new Image(inputImg));
+                    contenedor.getChildren().add(imgv);
+                } catch (Exception ex) {
+                    //System.out.println(c);
+                    ex.printStackTrace();
+                }
+                Label lb1 = new Label(c.getNombre());
+                Label lb2 = new Label("$ " + String.valueOf(c.getPrecio()));
+                contenedor.getChildren().addAll(lb1, lb2);
+                ComidaData.registrarComida(c);
+                panelComidas.getChildren().add(contenedor);
+                //ubicarComida();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
-    
     }
 
     @FXML
@@ -396,14 +506,38 @@ public class InterfazAdministradorController implements Initializable {
     @FXML
     private void modificarPlato(MouseEvent event) {
         String nombre = txtNombreModi.getText();
+        //this.nombrePlato = nombre;
         String nombreNuevo = txtNuevoNombreModi.getText();
         String tipo = cbTipoComidaM.getValue();
         double precio = Double.parseDouble(txtPrecioModi.getText());
         String rutaImg = txtRutaImgModi.getText();
-        for(Comida c: ComidaData.comidas){
+        //Comida food; 
+        List<Comida> comidas = ComidaData.comidas;
+        for(Comida c: comidas){
+            //System.out.println(c.getNombre());
             if(c.getNombre().equals(nombre)){
-                
+                try {
+                    
+                    ComidaData.eliminarComida(c);
+                    //food = c; 
+                    System.out.println(c);
+                    c.setNombre(nombreNuevo);
+                    c.setTipo(tipo);
+                    c.setPrecio(precio);
+                    c.setImagen(rutaImg);
+                    ComidaData.registrarComida(c); 
+                    listaComidasHilo.add(c);
+                    //System.out.println(c.getNombre());
+                } catch (URISyntaxException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
+            /*
+            else{
+              listaComidasHilo.add(c);  
+            }*/
         }
     }
 
@@ -475,6 +609,80 @@ public class InterfazAdministradorController implements Initializable {
             }
         }
     }
+    
+    class ActualizarComidasRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                    if (listaComidasHilo != null) {
+                        for (Comida c : listaComidasHilo) {
+                            try {
+                                VBox contenedor = new VBox();
+                                InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
+                                ImageView imgv = new ImageView(new Image(inputImg));
+                                contenedor.getChildren().add(imgv);
+                                Label lb1 = new Label(c.getNombre());
+                                Label lb2 = new Label("$ " + String.valueOf(c.getPrecio()));
+                                contenedor.getChildren().addAll(lb1, lb2);
+                                Platform.runLater(() -> {
+                                    panelComidas.getChildren().add(contenedor);
+                                });
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                        listaComidasHilo.clear();
+                    }
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    public void ubicarComida() {
+        
+        ArrayList<Comida> lC = ComidaData.comidas;
+        for (Comida c : lC) {
+            VBox contenedor = new VBox();
+            try {
+                InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
+                ImageView imgv = new ImageView(new Image(inputImg));
+                contenedor.getChildren().add(imgv);
+            } catch (Exception ex) {
+                //System.out.println(c);
+                ex.printStackTrace();
+            }
+            Label lb1 = new Label(c.getNombre());
+            Label lb2 = new Label("$ " + String.valueOf(c.getPrecio()));
+            contenedor.getChildren().addAll(lb1, lb2);
+            panelComidas.getChildren().add(contenedor);
+        }
+        
+    }
+
+        
 
 
+
+    /*
+    class ActualizarListaMesas implements Runnable{
+
+        @Override
+        public void run() {
+            while(true){
+                try {
+                    MesaData.mesas = cargarMesasArchivo();
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    
+    }
+    */
 }

@@ -90,7 +90,7 @@ public class ComidaData {
         try ( BufferedWriter bwr = new BufferedWriter(new FileWriter(file, false));) {
             bwr.write("Nombre,Precio,Tipo,Imagen");
             bwr.newLine();
-            for (Mesa mesa : mesas) {
+            for (Comida comida : comidas) {
                 String linea = c.getNombre()+","+c.getPrecio()+","+c.getTipo()+","+c.getImagen();
                 bwr.write(linea);
                 bwr.newLine();

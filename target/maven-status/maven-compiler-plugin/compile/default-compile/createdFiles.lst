@@ -3,12 +3,15 @@ com\mycompany\proyecto2par\UsuarioData.class
 com\mycompany\proyecto2par\VentanaGestionMesaController.class
 com\mycompany\proyecto2par\UbicacionesMesas.class
 com\mycompany\proyecto2par\Comida.class
+com\mycompany\proyecto2par\InterfazAdministradorController$ActualizarMesasRunnable.class
 com\mycompany\proyecto2par\Informacion_MesasController.class
 com\mycompany\proyecto2par\InterfazMeseroController.class
 com\mycompany\proyecto2par\PedidosController.class
 com\mycompany\proyecto2par\VentanaNuevaMesaController.class
 com\mycompany\proyecto2par\InterfazAdministradorController.class
+com\mycompany\proyecto2par\InterfazAdministradorController$ComensalesRunnable.class
 com\mycompany\proyecto2par\VentanaNuevaMesaController$ActualizarMesa.class
+com\mycompany\proyecto2par\InterfazAdministradorController$TotalRunnable.class
 com\mycompany\proyecto2par\App.class
 com\mycompany\proyecto2par\Usuario.class
 com\mycompany\proyecto2par\VentasData.class

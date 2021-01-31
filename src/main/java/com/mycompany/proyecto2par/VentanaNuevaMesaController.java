@@ -64,9 +64,9 @@ public class VentanaNuevaMesaController implements Initializable {
             Parent root = fxmlLoader.load();
             InterfazAdministradorController iac = fxmlLoader.getController();
             UbicacionesMesas ub = new UbicacionesMesas(x,y);
-            Mesa m = new Mesa(txtNumeroMesa.getText(),Integer.parseInt(txtCapacidadMesa.getText()),ub,false,30);
+            Mesa m = new Mesa(txtNumeroMesa.getText(),Integer.parseInt(txtCapacidadMesa.getText()),ub,false,35);
             MesaData.registrarMesa(m);
-            Circle c = new Circle(30,Color.GREEN);
+            Circle c = new Circle(35,Color.GREEN);
             Label lb1 = new Label(txtNumeroMesa.getText());
             StackPane sp = new StackPane(c,lb1);
             iac.getPanelSuelo2().getChildren().add(sp);

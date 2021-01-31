@@ -27,7 +27,10 @@ import javafx.scene.layout.StackPane;
  */
 public class Modificador_mesaController implements Initializable {
 
-
+    private StackPane spMesa;
+    
+    private Mesa mesa;
+    
     @FXML
     private TextField txtNumeroMesa;
     @FXML
@@ -36,6 +39,8 @@ public class Modificador_mesaController implements Initializable {
     private Button btnModificarNumero;
     @FXML
     private Button btnModificarLimpiar;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -44,36 +49,67 @@ public class Modificador_mesaController implements Initializable {
         
     }    
     
+    //SETTERS
+    public void setSpMesa(StackPane spMesa) {
+        this.spMesa = spMesa;
+    }
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+    }
+    
+    //METODOS DEL CONTROLADOR
     @FXML
     private void modificarDatos(MouseEvent event) throws IOException {
-        String numero = txtNumeroMesa.getText();
-        String capacidad = txtCapacidadMesa.getText();
+        /*
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaGestionMesa.fxml"));
-        InterfazAdministradorController iac = fxmlLoader.getController();
-        try {
-            
-        Label lb = (Label)iac.getSpMesa().getChildren().get(1); 
-       
-        List<Mesa> lmesa = MesaData.cargarMesasArchivo();
-        for (Mesa m : lmesa){
-            if (m.getNumeroMesa().equals(lb.getText())){
-                m.setNumeroMesa(numero);
-                m.setCapacidad(Integer.parseInt(capacidad));
+        Parent root = fxmlLoader.load();
+        VentanaGestionMesaController vgmc = fxmlLoader.getController();
+        mesa = vgmc.getMesa();
+*/
+        try{
+            String numero = txtNumeroMesa.getText();
+            String capacidad = txtCapacidadMesa.getText();
+        
+            Label lb = (Label) spMesa.getChildren().get(1);
+            String nuMesa = lb.getText();
+            System.out.println(nuMesa);
+            //lb.setText(numero);
+        
+            //List<Mesa> mesasArchivo = MesaData.mesas;
+            for(Mesa m : MesaData.mesas){
+                //System.out.println("hola");
+                if(m.getNumeroMesa().equals(nuMesa)){
+                    setMesa(m);
+                    MesaData.eliminarMesa(m);
+                }
+                else{
+                    System.out.println("valiste v");
+                }
             }
+            mesa.setCapacidad(Integer.parseInt(capacidad));
+            mesa.setNumeroMesa(numero);
+            MesaData.registrarMesa(mesa);
         }
-        
-        
-        }catch (IndexOutOfBoundsException e){
-        e.printStackTrace();
+        catch(Exception ex){
+            System.out.println(mesa);
+            ex.printStackTrace();
         }
+        //m.setCapacidad(Integer.parseInt(capacidad));
+        //m.setNumeroMesa(numero);
         
         
     }
+
     
     @FXML
     private void limpiarDatos(MouseEvent evetxtNumeroMesant) {
         txtNumeroMesa.clear();
         txtCapacidadMesa.clear(); 
     }
+
+    
+
+  
 
 }

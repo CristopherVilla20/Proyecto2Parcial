@@ -51,11 +51,21 @@ public class VentanaGestionMesaController implements Initializable {
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
     }
+
+    public StackPane getSpMesa() {
+        return spMesa;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
+    }
+    
     
     @FXML
     private void modificarMesa(MouseEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("modificador_mesa.fxml"));
+            System.out.println(mesa);
             Parent root = fxmlLoader.load();
             Scene sc = new Scene(root);
             Stage stage = new Stage();
@@ -70,12 +80,14 @@ public class VentanaGestionMesaController implements Initializable {
     @FXML
     private void eliminarMesa(MouseEvent event) throws IOException {
         try {
-            Object MouseEvent = event.getSource();
+            //Object MouseEvent = event.getSource();
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("interfazAdministrador.fxml"));
             Parent root = fxmlLoader.load();
             InterfazAdministradorController iac = fxmlLoader.getController();
-            iac.getPanelSuelo().getChildren().remove(mesa);
-            iac.getPanelSuelo2().getChildren().remove(mesa);
+            iac.getPanelSuelo().getChildren().remove(spMesa);
+            iac.getPanelSuelo2().getChildren().remove(spMesa);
+            System.out.println(spMesa ==null);
+            System.out.println(mesa.getNumeroMesa());
             MesaData.eliminarMesa(mesa);
         } catch (URISyntaxException ex) {
             ex.printStackTrace();

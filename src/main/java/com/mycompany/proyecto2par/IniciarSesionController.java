@@ -65,8 +65,12 @@ public class IniciarSesionController implements Initializable {
                     //System.out.println(App.getUser()!=null);
                     if (u.getPrivilegio().equals("administrador")) {
                         App.setRoot("interfazAdministrador");
+                        //Thread t = new Thread(new IniciarAdminRunnable());
+                        //t.start();
                     } else if (u.getPrivilegio().equals("mesero")) {              
                         App.setRoot("interfazMesero");
+                        //Thread t2 = new Thread(new IniciarMeseroRunnable());
+                        //t2.start();
                     }
                 }
             }
@@ -78,6 +82,38 @@ public class IniciarSesionController implements Initializable {
         }
 
     }
+    /*
+    class IniciarAdminRunnable implements Runnable{
 
+        @Override
+        public void run() {
+            while (true){
+                try {
+                    App.setRoot("interfazAdministrador");
+                    Thread.sleep(20000);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }}
+    
+    }
+    */
+    /*
+    class IniciarMeseroRunnable implements Runnable{
+
+        @Override
+        public void run() {
+            while(true){
+                try {
+                    App.setRoot("interfazMesero");
+                    Thread.sleep(20000);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        
+    }
+*/
 
 }

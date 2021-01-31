@@ -72,7 +72,5 @@ public class Mesa {
         this.estado = estado;
     }
 
-    void setCapacidad(String capacidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

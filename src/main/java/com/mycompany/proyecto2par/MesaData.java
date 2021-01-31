@@ -26,10 +26,11 @@ import java.util.List;
 public class MesaData {
     
     static String ruta = "mesas.txt";
-    //static ArrayList<Mesa> mesas = cargarMesasArchivo() ;
+    static ArrayList<Mesa> mesas = cargarMesasArchivo() ;
+    
+    
     public static ArrayList<Mesa> cargarMesasArchivo() {
         ArrayList<Mesa> mesas = new ArrayList<>();
-       
         //Usamos la clase BufferedReader para leer archivos de texto
         try {
             URL u = App.class.getResource(ruta);
@@ -61,22 +62,17 @@ public class MesaData {
     }
     
     
-    public static void registrarMesa(Mesa m) throws IOException  {
+    public static void registrarMesa(Mesa m) throws IOException, URISyntaxException  {
         
-    
-        try{ 
-            URL u = App.class.getResource(ruta);
-            File file = new File(u.toURI());
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file,true))){
-                String linea = m.getNumeroMesa()+","+m.getCapacidad()+","+m.getUbicacion()+","+m.getEstado()+","+m.getTamanio();
-                
-                bw.write(linea);
-                bw.newLine();
-                
-            }
+        mesas.add(m);
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file,true))){
+            String linea = m.getNumeroMesa()+","+m.getCapacidad()+","+m.getUbicacion()+","+m.getEstado()+","+m.getTamanio();
             
-        } catch (URISyntaxException ex) {
-            ex.printStackTrace();
+            bw.write(linea);
+            bw.newLine();
+            
         }
     }  
     
@@ -84,8 +80,11 @@ public class MesaData {
 
         URL u = App.class.getResource(ruta);
         File file = new File(u.toURI());
-        List<Mesa> mesas = cargarMesasArchivo();
+        //"src/main/resources/com/mycompany/proyecto2par/mesas.txt"
+        //System.out.println(mesas);
         mesas.remove(m);
+        //System.out.println(mesas);
+        
         try ( BufferedWriter bwr = new BufferedWriter(new FileWriter(file, false));) {
             bwr.write("Numero,Capacidad,Ubicacion,Estado,Tamanio");
             bwr.newLine();

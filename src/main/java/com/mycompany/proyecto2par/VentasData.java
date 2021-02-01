@@ -5,11 +5,16 @@
  */
 package com.mycompany.proyecto2par;
 
+import static com.mycompany.proyecto2par.ComidaData.comidas;
+import static com.mycompany.proyecto2par.ComidaData.ruta;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +26,7 @@ import java.util.ArrayList;
 public class VentasData {
     
     static String ruta = "ventas.txt";
+    static ArrayList<Venta> ventas = leerVentas();
 
     public static ArrayList<Venta> leerVentas()  {
         ArrayList<Venta> v = new ArrayList<>();
@@ -50,5 +56,21 @@ public class VentasData {
         }
         return v;
     }
+    public static void registrarVenta (Venta v) throws IOException {
+        
+        ventas.add(v);
+        try{
+            URL u = App.class.getResource(ruta);
+            File file = new File(u.toURI());
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file,true))){
+                //Fecha;Numero_Mesa;Mesero;Cuenta;Cliente;Total
+                String linea = v.getFecha()+";"+v.getNumMesa()+";"+v.getNombreMesero()+";"+v.getCuenta()+";"+v.getNomCliente()+";"+v.getTotal();
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+    }  
     
 }

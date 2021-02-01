@@ -60,11 +60,29 @@ import javafx.scene.effect.Light.Point;
  * @author Stalin Garcia
  */
 public class InterfazAdministradorController implements Initializable {
-
+   
+    static boolean agregando=false;
     private ObservableList<Venta> listaVentas = FXCollections.observableArrayList();
-    
+    static StackPane spNuevaMesa;
     private int totalComensales;
+
+    public boolean isAgregando() {
+        return agregando;
+    }
+
+    public void setAgregando(boolean agregando) {
+        this.agregando = agregando;
+    }
     
+    public StackPane getSpNuevaMesa() {
+        return spNuevaMesa;
+    }
+
+    public void setSpNuevaMesa(StackPane spNuevaMesa) {
+        this.spNuevaMesa = spNuevaMesa;
+    }
+
+        
     private double initX;
     
     private double initY;
@@ -156,7 +174,8 @@ public class InterfazAdministradorController implements Initializable {
 
         //ponerMesas(panelSuelo);
         //ponerMesas(panelSuelo2);
-    
+        ponerMesas(panelSuelo);
+        ponerMesas(panelSuelo2);
     //HILOS
     
          //Ubicar Dato Comensales (Hilo)
@@ -295,7 +314,7 @@ public class InterfazAdministradorController implements Initializable {
                     }
             ); 
             //solo para el 2do panel
-            /*
+            
             if(panel.getId().equals("panelSuelo2")){
                 
                 st.setOnMousePressed((MouseEvent event) -> {
@@ -316,10 +335,10 @@ public class InterfazAdministradorController implements Initializable {
                     st.setLayoutY(newYPosition);
                     UbicacionesMesas uM = new UbicacionesMesas(newXPosition,newYPosition);
                     try{
-                    MesaData.eliminarMesa(m);
+                    //MesaData.eliminarMesa(m);
                     
                     m.setUbicacion(uM);
-                    MesaData.registrarMesa(m);
+                    //MesaData.registrarMesa(m);
                     
                     }
                     catch(Exception ex){
@@ -335,13 +354,11 @@ public class InterfazAdministradorController implements Initializable {
                     if((newYPosition >= st.getHeight()/2) && (newYPosition <= height_area - st.getHeight()/2)){
                         st.setLayoutY(newYPosition);
                     }
-                    
+                    */
                 });
                 
-                st.setOnMouseReleased((MouseEvent event)->{
-                    panel.getChildren().remove(st);
-                });
-                /*
+                
+                
                 
                 st.setOnMouseDragged(
                     (MouseEvent event) -> {
@@ -358,7 +375,7 @@ public class InterfazAdministradorController implements Initializable {
                             System.out.println(ex.getMessage());                        
                         }
                     });
-                */
+                
             
                 }
             
@@ -367,7 +384,7 @@ public class InterfazAdministradorController implements Initializable {
         }
 
     
-        
+    }
 
     
     @FXML
@@ -596,19 +613,21 @@ public class InterfazAdministradorController implements Initializable {
 
         @Override
         public void run() {
-            while (true) {
+            while (agregando) {
                 try {
+                    System.out.println(agregando);
                     Platform.runLater(()->{
-                    ponerMesas(panelSuelo);
-                    ponerMesas(panelSuelo2);
+                    agregarMesa(spNuevaMesa);
                     });
+                    agregando=false;
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
-            }
         }
     }
+    }
+    
     
     class ActualizarComidasRunnable implements Runnable {
 
@@ -665,7 +684,13 @@ public class InterfazAdministradorController implements Initializable {
     }
 
         
-
+    public void agregarMesa(StackPane sp){
+            panelSuelo.getChildren().add(sp);
+            panelSuelo2.getChildren().add(sp);
+                    
+            
+        }
+    
 
 
     /*

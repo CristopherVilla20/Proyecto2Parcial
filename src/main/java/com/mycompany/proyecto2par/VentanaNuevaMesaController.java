@@ -7,6 +7,7 @@ package com.mycompany.proyecto2par;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,6 +35,7 @@ public class VentanaNuevaMesaController implements Initializable {
     
     private double y;
     
+    
     @FXML
     private TextField txtCapacidadMesa;
     @FXML
@@ -46,7 +49,7 @@ public class VentanaNuevaMesaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      
     }    
 
     public void setX(double x) {
@@ -60,16 +63,25 @@ public class VentanaNuevaMesaController implements Initializable {
     @FXML
     private void agMesa(MouseEvent event) {
         try{
+            
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("interfazAdministrador.fxml"));
             Parent root = fxmlLoader.load();
+            //Scene sc= new Scene(root);
+            
             InterfazAdministradorController iac = fxmlLoader.getController();
+           
             UbicacionesMesas ub = new UbicacionesMesas(x,y);
             Mesa m = new Mesa(txtNumeroMesa.getText(),Integer.parseInt(txtCapacidadMesa.getText()),ub,false,35);
             MesaData.registrarMesa(m);
             Circle c = new Circle(35,Color.GREEN);
             Label lb1 = new Label(txtNumeroMesa.getText());
             StackPane sp = new StackPane(c,lb1);
-            iac.getPanelSuelo2().getChildren().add(sp);            
+            
+            iac.setSpNuevaMesa(sp);
+            iac.setAgregando(true);
+            
+            //iac.getPanelSuelo2().getChildren().add(sp); 
+            //iac.actualizarMesa();
             //iac.ponerMesas(iac.getPanelSuelo());
             //iac.ponerMesas(iac.getPanelSuelo2());     
         }catch(Exception ex){
@@ -79,15 +91,6 @@ public class VentanaNuevaMesaController implements Initializable {
 
     }
 
-    class ActualizarMesa implements Runnable{
-
-        @Override
-        public void run() {
-            //ArrayList<Mesa> = MesaData.cargarMesasArchivo();
-
-        }
-    }
-    
     @FXML
     private void limpiarDatos(MouseEvent event) {
         txtCapacidadMesa.setText("");

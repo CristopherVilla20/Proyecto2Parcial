@@ -49,7 +49,11 @@ public class FinalizarOrdenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
+    /**
+     * Se registra la venta en el documento 
+     * @param event 
+     */
     @FXML
     private void confirmarOrden(MouseEvent event) {
         try {
@@ -70,7 +74,11 @@ public class FinalizarOrdenController implements Initializable {
             ex.printStackTrace();
         }
     }
-
+    
+    /**
+     * cierra la ventana "FinalizarOrden"
+     * @param event 
+     */
     @FXML
     private void cancelarOrden(MouseEvent event) {
         Node source = (Node) event.getSource();

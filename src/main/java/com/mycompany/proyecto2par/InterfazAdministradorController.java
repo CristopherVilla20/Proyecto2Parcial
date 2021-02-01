@@ -82,7 +82,9 @@ public class InterfazAdministradorController implements Initializable {
         this.spNuevaMesa = spNuevaMesa;
     }
 
-        
+    
+    int valedor;
+    
     private double initX;
     
     private double initY;
@@ -178,7 +180,7 @@ public class InterfazAdministradorController implements Initializable {
         ponerMesas(panelSuelo2);
     //HILOS
     
-         //Ubicar Dato Comensales (Hilo)
+        //Ubicar Dato Comensales (Hilo)
         Thread t = new Thread(new ComensalesRunnable());
         t.start();
         
@@ -187,14 +189,14 @@ public class InterfazAdministradorController implements Initializable {
         t2.start();
         
         //ActualizarMesa (Hilo)
-        Thread t3 = new Thread(new ActualizarMesasRunnable());
-        t3.start();
+        //Thread t3 = new Thread(new ActualizarMesasRunnable());
+        //t3.start();
         
         //Thread t4 = new Thread(new ActualizarListaMesas());
         //t4.start();
         
-        Thread t5 = new Thread(new ActualizarComidasRunnable());
-        t5.start();    
+        //Thread t5 = new Thread(new ActualizarComidasRunnable());
+        //t5.start();    
         
         
     //VENTAS
@@ -221,26 +223,7 @@ public class InterfazAdministradorController implements Initializable {
        
         //Ubicar comida (Gestion Menu) 
         ubicarComida();
-        /*
-        List<Comida> comidas = ComidaData.cargarComidasArchivo();
         
-        for(Comida c: comidas){
-            VBox contenedor = new VBox();
-            try{
-                InputStream inputImg = App.class.getResource(c.getImagen()).openStream();           
-                ImageView imgv = new ImageView(new Image(inputImg));
-                contenedor.getChildren().add(imgv);
-    }
-            catch(Exception ex){
-                    //System.out.println(c);
-                    ex.printStackTrace();
-                }
-            Label lb1 = new Label(c.getNombre());
-            Label lb2 = new Label("$ " +String.valueOf(c.getPrecio()));
-            contenedor.getChildren().addAll(lb1,lb2);
-            panelComidas.getChildren().add(contenedor);
-        }
-        */
     }
     
     //GETTERS
@@ -261,7 +244,10 @@ public class InterfazAdministradorController implements Initializable {
     }
     
     //METODOS ADMINISTRADOR
-   
+   /**
+    * Recibe un panel y ubica las mesas segun el panel recibido.
+    * @param panel 
+    */
     public void ponerMesas(Pane panel) {
         List<Mesa> mesas = MesaData.mesas;
         for (Mesa m : mesas) {
@@ -273,14 +259,21 @@ public class InterfazAdministradorController implements Initializable {
                 c = new Circle(m.getTamanio(), Color.GREEN);
                 
             }
+            //Se crea el stackPane que tendra los datos de la mesa 
             Label l = new Label(m.getNumeroMesa());
             StackPane st = new StackPane();
             st.getChildren().addAll(c, l);
-                        
+            
+            //Se agrega la mesa al panel 
             panel.getChildren().add(st);
+            
+            //Se ubican las mesas 
             st.setLayoutX(m.getUbicacion().getX());
             st.setLayoutY(m.getUbicacion().getY());
             
+            //Manejador que muestra la información de las mesas en la pestaña "MONITOREO"
+            //Y las vistas para modificar, agregar y eliminar mesa en la pestaña "DISEÑO PLANO"
+            //Según el panel en el que se encuentre el StackPane
             st.setOnMouseClicked(
                     (MouseEvent event) -> {
                         event.consume();
@@ -288,14 +281,7 @@ public class InterfazAdministradorController implements Initializable {
                             mostrarInformacionMesa(m);
                         }
                         else{
-                            try {
-                                /*
-                                FXMLLoader fxmlLoader2 = new FXMLLoader(App.class.getResource("modificador_mesa.fxml"));
-                                Parent root2 = fxmlLoader2.load();
-                                Modificador_mesaController mmc = fxmlLoader2.getController();
-                                //mmc.setMesa(m);
-                                mmc.setSpMesa((StackPane)event.getSource());
-                                */
+                            try {                               
                                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ventanaGestionMesa.fxml"));
                                 Parent root = fxmlLoader.load();
                                 VentanaGestionMesaController vgmc = fxmlLoader.getController();
@@ -305,26 +291,23 @@ public class InterfazAdministradorController implements Initializable {
                                 Stage stage = new Stage();
                                 stage.setScene(sc);
                                 stage.setResizable(false);
-                                stage.show();                                
-                                
+                                stage.show();                                                                
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
                         }
                     }
             ); 
-            //solo para el 2do panel
-            
+            //solo para el 2do panel            
             if(panel.getId().equals("panelSuelo2")){
                 
-                st.setOnMousePressed((MouseEvent event) -> {
-                    initX = st.getLayoutX();
+                //Manejador que asigna el valor en X,Y de la ubicacion del StackPane al darle click
+                st.setOnMousePressed((MouseEvent event) -> {                                        initX = st.getLayoutX();
                     initY = st.getLayoutY();
                     posicionInitMouse = new Point2D(event.getSceneX(),event.getSceneY());
                 });
-                
-                st.setOnMouseDragged((MouseEvent event)->{
-                    
+                //Manejador de la posicion del StackPane al moverlo
+                st.setOnMouseDragged((MouseEvent event)->{                   
                     double dragX = event.getSceneX() - posicionInitMouse.getX();
                     double dragY= event.getSceneY() - posicionInitMouse.getY();
                     
@@ -334,59 +317,42 @@ public class InterfazAdministradorController implements Initializable {
                     st.setLayoutX(newXPosition);
                     st.setLayoutY(newYPosition);
                     UbicacionesMesas uM = new UbicacionesMesas(newXPosition,newYPosition);
-                    try{
-                    //MesaData.eliminarMesa(m);
-                    
-                    m.setUbicacion(uM);
-                    //MesaData.registrarMesa(m);
-                    
+                    try{ 
+                    //MesaData.eliminarMesa(m);   
+                    //m.setUbicacion(uM);
+                    ArrayList<Mesa> aM = MesaData.cargarMesasArchivo();
+                    for(Mesa mE: aM){
+                        if(mE.getNumeroMesa().equals(m.getNumeroMesa()))
+                            mE.setUbicacion(uM);
+                    }
+                    MesaData.sobreescribirArchivoMesa(aM);
                     }
                     catch(Exception ex){
-                        System.out.println("Aqui se esta valiendo pistola");
                         System.out.println(ex.getMessage());                    
-                    }
-                    //double width_area = panel.widthProperty().doubleValue();
-                    //double height_area = panel.heightProperty().doubleValue();
-                    /*
-                    if((newXPosition >= st.getWidth()/2) && (newXPosition <= width_area - st.getWidth()/2)){
-                        st.setLayoutX(newXPosition);
-                    }
-                    if((newYPosition >= st.getHeight()/2) && (newYPosition <= height_area - st.getHeight()/2)){
-                        st.setLayoutY(newYPosition);
-                    }
-                    */
+                    }                    
                 });
+                /*
+                st.setOnMouseReleased((MouseEvent event)->{                    
+                    try {
+                        
+                        MesaData.registrarMesa(m);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (URISyntaxException ex) {
+                        ex.printStackTrace();
+                    }
                 
-                
-                
-                
-                st.setOnMouseDragged(
-                    (MouseEvent event) -> {
-                        event.consume();
-                        try{
-                            st.setLayoutX(event.getSceneX());
-                            st.setLayoutY(event.getSceneY());
-                            UbicacionesMesas uM = new UbicacionesMesas(event.getSceneX(),event.getSceneY());                            
-                            MesaData.eliminarMesa(m);
-                            m.setUbicacion(uM);
-                            MesaData.registrarMesa(m);
-                        } 
-                        catch(Exception ex){
-                            System.out.println(ex.getMessage());                        
-                        }
-                    });
-                
-            
-                }
-            
-        
-            
-        }
-
-    
+                });
+                */
+            }                                
+        }    
     }
 
-    
+    /**
+     * Buscador de ventas segun un rango de fecha
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void buscarReporteVentas(MouseEvent event) throws IOException {
 
@@ -418,7 +384,11 @@ public class InterfazAdministradorController implements Initializable {
     }
 
     
-
+    /**
+     * Permite iniciar una nueva busqueda, limpiando los textfield y ubicando todas
+     * las ventas de nuevo.
+     * @param event 
+     */
     @FXML
     private void refrescarBusquedaReporteVentas(MouseEvent event) {
         listaVentas.clear();
@@ -432,6 +402,10 @@ public class InterfazAdministradorController implements Initializable {
         tabla.setItems(listaVentas);
     }
 
+    /**
+     * Abre la vista ventanaNuevaMesa
+     * @param event 
+     */
     @FXML
     private void abrirPanelAM(MouseEvent event) {
         //panelSuelo2.getChildren();
@@ -454,7 +428,10 @@ public class InterfazAdministradorController implements Initializable {
         }
     }
 
-    
+    /**
+     * Muestra la informacion de las mesas al darle click, en el panel de monitoreo
+     * @param m 
+     */
     private void mostrarInformacionMesa(Mesa m) {
         try {
             FXMLLoader fxmlLoader
@@ -476,7 +453,10 @@ public class InterfazAdministradorController implements Initializable {
             ex.printStackTrace();
         }
     }
-
+    /**
+     * Agrega un nuevo plato al menu
+     * @param event 
+     */
     @FXML
     private void agregarPlato(MouseEvent event) {
 
@@ -511,7 +491,10 @@ public class InterfazAdministradorController implements Initializable {
             }
         }
     }
-
+    /**
+     * Limpia los textfield de la seccion AgregarPlato
+     * @param event 
+     */
     @FXML
     private void limpiarAgregarPlato(MouseEvent event) {
         txtNombreAgregar.clear();
@@ -519,45 +502,45 @@ public class InterfazAdministradorController implements Initializable {
         txtRutaAgregar.clear();
                 
     }
-
+    /**
+     * Modifica los datos de un plato y lo presenta por pantalla
+     * @param event 
+     */
     @FXML
     private void modificarPlato(MouseEvent event) {
-        String nombre = txtNombreModi.getText();
-        //this.nombrePlato = nombre;
+        String nombre = txtNombreModi.getText();        
         String nombreNuevo = txtNuevoNombreModi.getText();
         String tipo = cbTipoComidaM.getValue();
         double precio = Double.parseDouble(txtPrecioModi.getText());
-        String rutaImg = txtRutaImgModi.getText();
-        //Comida food; 
-        List<Comida> comidas = ComidaData.comidas;
-        for(Comida c: comidas){
-            //System.out.println(c.getNombre());
-            if(c.getNombre().equals(nombre)){
-                try {
-                    
-                    ComidaData.eliminarComida(c);
-                    //food = c; 
-                    System.out.println(c);
-                    c.setNombre(nombreNuevo);
-                    c.setTipo(tipo);
-                    c.setPrecio(precio);
-                    c.setImagen(rutaImg);
-                    ComidaData.registrarComida(c); 
-                    listaComidasHilo.add(c);
-                    //System.out.println(c.getNombre());
-                } catch (URISyntaxException ex) {
-                    ex.printStackTrace();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+        String rutaImg = txtRutaImgModi.getText();       
+        ArrayList<Comida> LasComidas = ComidaData.cargarComidasArchivo();
+        for (Comida c : LasComidas) {           
+            if (c.getNombre().equals(nombre)) {
+                c.setNombre(nombreNuevo);
+                c.setTipo(tipo);
+                c.setPrecio(precio);
+                c.setImagen(rutaImg);               
             }
-            /*
-            else{
-              listaComidasHilo.add(c);  
-            }*/
+    
         }
+        try {
+                ComidaData.sobreescribirArchivoComida(LasComidas);
+            } catch (URISyntaxException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        if(panelComidas.getChildren()!=null){
+            panelComidas.getChildren().clear();
+        }
+        this.valedor = 0;
+        Thread t5 = new Thread(new ActualizarComidasRunnable());
+        t5.start(); 
     }
-
+    /**
+     * Limpia los textfield se la seccion Modificar Plato
+     * @param event 
+     */
     @FXML
     private void limpiarModificarPlato(MouseEvent event) {
         txtNombreModi.clear();
@@ -565,7 +548,34 @@ public class InterfazAdministradorController implements Initializable {
         txtPrecioModi.clear();
         txtRutaImgModi.clear();
     }
-
+    /**
+     * Ubica los platos en la pestania "GESTION MENU"
+     */
+    public void ubicarComida() {
+        
+        ArrayList<Comida> lC = ComidaData.cargarComidasArchivo();
+        for (Comida c : lC) {
+            VBox contenedor = new VBox();
+            try {
+                InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
+                ImageView imgv = new ImageView(new Image(inputImg));
+                contenedor.getChildren().add(imgv);
+            } catch (Exception ex) {                
+                ex.printStackTrace();
+            }
+            Label lb1 = new Label(c.getNombre());
+            Label lb2 = new Label("$ " + String.valueOf(c.getPrecio()));
+            contenedor.getChildren().addAll(lb1, lb2);
+            panelComidas.getChildren().add(contenedor);
+        }
+        
+    }
+    
+    //HILOS
+    /**
+     * Modifica el numero de clientes que se observa en la pestania "MONITOREO"
+     * segun el numero de personas por mesa
+     */
     class ComensalesRunnable implements Runnable {
 
         @Override
@@ -589,7 +599,10 @@ public class InterfazAdministradorController implements Initializable {
         }
 
     }
-
+    /**
+     * Actualizar total de las ventas que se observa en la pestania "MONITOREO"
+     * cada vez que se realiza una venta
+     */
     class TotalRunnable implements Runnable {
 
         @Override
@@ -608,18 +621,20 @@ public class InterfazAdministradorController implements Initializable {
             }
         }
     }
-    
+    /**
+     * Actualiza las mesas si se efectua un cambio
+     */
+    /*
     class ActualizarMesasRunnable implements Runnable {
 
         @Override
         public void run() {
             while (agregando) {
-                try {
-                    System.out.println(agregando);
+                try {                    
                     Platform.runLater(()->{
-                    agregarMesa(spNuevaMesa);
-                    });
-                    agregando=false;
+                        agregarMesa(spNuevaMesa);
+                        agregando=false;
+                    });                    
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
@@ -627,87 +642,45 @@ public class InterfazAdministradorController implements Initializable {
         }
     }
     }
-    
+    */
+    /**
+     * Actualiza las comidas en el panel si se efectua un cambio 
+     */  
     
     class ActualizarComidasRunnable implements Runnable {
 
         @Override
         public void run() {
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                    if (listaComidasHilo != null) {
-                        for (Comida c : listaComidasHilo) {
-                            try {
-                                VBox contenedor = new VBox();
-                                InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
-                                ImageView imgv = new ImageView(new Image(inputImg));
-                                contenedor.getChildren().add(imgv);
-                                Label lb1 = new Label(c.getNombre());
-                                Label lb2 = new Label("$ " + String.valueOf(c.getPrecio()));
-                                contenedor.getChildren().addAll(lb1, lb2);
-                                Platform.runLater(() -> {
-                                    panelComidas.getChildren().add(contenedor);
-                                });
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
-                            }
-                        }
-                        listaComidasHilo.clear();
+            while (valedor<1) {
+                for (Comida c : ComidaData.cargarComidasArchivo()) {
+                    try {
+                        VBox contenedor = new VBox();
+                        InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
+                        ImageView imgv = new ImageView(new Image(inputImg));
+                        contenedor.getChildren().add(imgv);
+                        Label lb1 = new Label(c.getNombre());
+                        Label lb2 = new Label("$ " + String.valueOf(c.getPrecio()));
+                        contenedor.getChildren().addAll(lb1, lb2);
+                        Platform.runLater(() -> {
+                            panelComidas.getChildren().add(contenedor);
+                            valedor++;
+                            
+                        });
+                        //Thread.sleep(1000);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
                 }
             }
         }
     }
     
-    public void ubicarComida() {
-        
-        ArrayList<Comida> lC = ComidaData.comidas;
-        for (Comida c : lC) {
-            VBox contenedor = new VBox();
-            try {
-                InputStream inputImg = App.class.getResource(c.getImagen()).openStream();
-                ImageView imgv = new ImageView(new Image(inputImg));
-                contenedor.getChildren().add(imgv);
-            } catch (Exception ex) {
-                //System.out.println(c);
-                ex.printStackTrace();
-            }
-            Label lb1 = new Label(c.getNombre());
-            Label lb2 = new Label("$ " + String.valueOf(c.getPrecio()));
-            contenedor.getChildren().addAll(lb1, lb2);
-            panelComidas.getChildren().add(contenedor);
-        }
-        
-    }
-
-        
+    //Metodo que se llama dentro del hilo ActualizarMesasRunnable    
     public void agregarMesa(StackPane sp){
             panelSuelo.getChildren().add(sp);
             panelSuelo2.getChildren().add(sp);
                     
             
         }
-    
-
-
-    /*
-    class ActualizarListaMesas implements Runnable{
-
-        @Override
-        public void run() {
-            while(true){
-                try {
-                    MesaData.mesas = cargarMesasArchivo();
-                    Thread.sleep(2000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-    
-    }
-    */
+   
 }

@@ -98,4 +98,27 @@ public class ComidaData {
 
         }
     }
+    
+     public static void sobreescribirArchivoComida(ArrayList<Comida> lC) throws URISyntaxException, IOException {
+
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        //"src/main/resources/com/mycompany/proyecto2par/mesas.txt"
+        //System.out.println(mesas);
+        comidas.clear();
+        for (Comida c: lC){
+            comidas.add(c);
+        }        
+        
+        try ( BufferedWriter bwr = new BufferedWriter(new FileWriter(file, false));) {
+            bwr.write("Nombre,Precio,Tipo,Imagen");
+            bwr.newLine();
+            for (Comida c : lC) {
+                String linea = c.getNombre()+","+c.getPrecio()+","+c.getTipo()+","+c.getImagen();
+                bwr.write(linea);
+                bwr.newLine();
+            }
+
+        }
+    }
 }

@@ -45,9 +45,11 @@ public class InterfazMeseroController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        //Asigna el nombre del mesero al label de la vista "interfazMesero"
         lbMesero.setText("Mesero: " + App.getUser().getNombre());
 
+        //Ubica las mesas en el panel de la vista "interfazMesero"
         List<Mesa> mesas = MesaData.mesas;
         for (Mesa m : mesas) {
             Circle c;
@@ -97,12 +99,16 @@ public class InterfazMeseroController implements Initializable {
         }
 
     }
-
+    
+    /**
+     * Metodo que cierra la sesion del usuario, seteando la variable usuario logeada
+     * @param event 
+     */
     @FXML
     private void cerrarSesion(MouseEvent event) {
         App.setUser(null);
         App.setRoot("iniciarSesion");
-        //System.out.println(App.getUser()==null);
+        
     }
 
     

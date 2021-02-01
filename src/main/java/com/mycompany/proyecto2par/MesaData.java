@@ -98,5 +98,27 @@ public class MesaData {
         }
     }
     
+     public static void sobreescribirArchivoMesa(ArrayList<Mesa> lM) throws URISyntaxException, IOException {
+
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        //"src/main/resources/com/mycompany/proyecto2par/mesas.txt"
+        //System.out.println(mesas);
+        mesas.clear();
+        for (Mesa m: lM){
+            mesas.add(m);
+        }        
+        
+        try ( BufferedWriter bwr = new BufferedWriter(new FileWriter(file, false));) {
+            bwr.write("Numero,Capacidad,Ubicacion,Estado,Tamanio");
+            bwr.newLine();
+            for (Mesa mesa : lM) {
+                String linea = mesa.getNumeroMesa() + "," + mesa.getCapacidad() + "," + mesa.getUbicacion() + "," + mesa.getEstado() + "," + mesa.getTamanio();
+                bwr.write(linea);
+                bwr.newLine();
+            }
+
+        }
+    }
    
 }

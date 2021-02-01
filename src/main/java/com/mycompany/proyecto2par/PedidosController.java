@@ -45,11 +45,6 @@ public class PedidosController implements Initializable {
     private VBox contenedor = new VBox();
     
     private StackPane spMesa ;
-   
-
-    public void setSpMesa(StackPane spMesa) {
-        this.spMesa = spMesa;
-    }
 
     @FXML
     private Label lbNombreMesa;
@@ -194,9 +189,28 @@ public class PedidosController implements Initializable {
         }
     }
 
-       
-        
+    //GETTERS & SETTERS
+    public void setSpMesa(StackPane spMesa) {
+        this.spMesa = spMesa;
+    }    
 
+    public double getSumatoriatotal() {
+        return sumatoriatotal;
+    }
+    
+    public String getNumeroMesa() {
+        return numeroMesa;
+    }
+
+    public void setNumeroMesa(String numeroMesa) {
+        this.numeroMesa = numeroMesa;
+    }
+    
+    //METODOS FINALIZAR ORDEN
+    
+    /**
+     * muestra la vista "finalizarOrden"     * @param event 
+     */
     @FXML
     private void finalizarOrden(MouseEvent event) {
         try {
@@ -216,6 +230,9 @@ public class PedidosController implements Initializable {
     }
 
     @FXML
+    /**
+     * Cierra la vista "FinalizarOrden"
+     */
     private void regresar(MouseEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
@@ -224,17 +241,9 @@ public class PedidosController implements Initializable {
     
 
 
-    public double getSumatoriatotal() {
-        return sumatoriatotal;
-    }
+    
 
-    public String getNumeroMesa() {
-        return numeroMesa;
-    }
-
-    public void setNumeroMesa(String numeroMesa) {
-        this.numeroMesa = numeroMesa;
-    }
+    
     
     
 }

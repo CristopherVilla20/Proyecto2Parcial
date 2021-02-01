@@ -25,9 +25,6 @@ import javafx.scene.input.MouseEvent;
  */
 public class IniciarSesionController implements Initializable {
 
-
-    //private Usuario user = null;
-
     @FXML
     private TextField txtUsuario;
     @FXML
@@ -51,6 +48,9 @@ public class IniciarSesionController implements Initializable {
     
     
     @FXML
+    /**
+     * metodo que inicia sesion en el sistema
+     */
     private void iniciarSesion(MouseEvent event) throws IOException {
         try {
             if (txtUsuario.getText().isEmpty() || txtContraseña.getText().isEmpty()) {
@@ -61,16 +61,11 @@ public class IniciarSesionController implements Initializable {
             ArrayList<Usuario> usuarios = UsuarioData.leerUsuarios();
             for (Usuario u : usuarios) {
                 if (u.getCorreo().equals(correoUsuario) && u.getContrasenia().equals(contrasenia)) {
-                    App.setUser(u);
-                    //System.out.println(App.getUser()!=null);
+                    App.setUser(u);                   
                     if (u.getPrivilegio().equals("administrador")) {
-                        App.setRoot("interfazAdministrador");
-                        //Thread t = new Thread(new IniciarAdminRunnable());
-                        //t.start();
+                        App.setRoot("interfazAdministrador");                        
                     } else if (u.getPrivilegio().equals("mesero")) {              
-                        App.setRoot("interfazMesero");
-                        //Thread t2 = new Thread(new IniciarMeseroRunnable());
-                        //t2.start();
+                        App.setRoot("interfazMesero");                        
                     }
                 }
             }
@@ -82,38 +77,6 @@ public class IniciarSesionController implements Initializable {
         }
 
     }
-    /*
-    class IniciarAdminRunnable implements Runnable{
-
-        @Override
-        public void run() {
-            while (true){
-                try {
-                    App.setRoot("interfazAdministrador");
-                    Thread.sleep(20000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }}
     
-    }
-    */
-    /*
-    class IniciarMeseroRunnable implements Runnable{
-
-        @Override
-        public void run() {
-            while(true){
-                try {
-                    App.setRoot("interfazMesero");
-                    Thread.sleep(20000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-        
-    }
-*/
 
 }

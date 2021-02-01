@@ -5,12 +5,16 @@
  */
 package com.mycompany.proyecto2par;
 
+
+import static com.mycompany.proyecto2par.InterfazAdministradorController.agregando;
+import static com.mycompany.proyecto2par.InterfazAdministradorController.spNuevaMesa;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,6 +39,11 @@ public class VentanaNuevaMesaController implements Initializable {
     
     private double y;
     
+    private StackPane spMesa;
+    
+    private Mesa mesita;
+    
+    boolean agregando = false;
     
     @FXML
     private TextField txtCapacidadMesa;
@@ -60,35 +69,33 @@ public class VentanaNuevaMesaController implements Initializable {
         this.y = y;
     }
 
+    
     @FXML
     private void agMesa(MouseEvent event) {
-        try{
-            
+        try{            
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("interfazAdministrador.fxml"));
-            Parent root = fxmlLoader.load();
-            //Scene sc= new Scene(root);
-            
+            Parent root = fxmlLoader.load();                        
             InterfazAdministradorController iac = fxmlLoader.getController();
            
             UbicacionesMesas ub = new UbicacionesMesas(x,y);
             Mesa m = new Mesa(txtNumeroMesa.getText(),Integer.parseInt(txtCapacidadMesa.getText()),ub,false,35);
-            MesaData.registrarMesa(m);
-            Circle c = new Circle(35,Color.GREEN);
-            Label lb1 = new Label(txtNumeroMesa.getText());
-            StackPane sp = new StackPane(c,lb1);
+            mesita = m;
             
-            iac.setSpNuevaMesa(sp);
-            iac.setAgregando(true);
-            
-            //iac.getPanelSuelo2().getChildren().add(sp); 
-            //iac.actualizarMesa();
-            //iac.ponerMesas(iac.getPanelSuelo());
-            //iac.ponerMesas(iac.getPanelSuelo2());     
+            ArrayList<Mesa> aM = MesaData.cargarMesasArchivo();
+            if(!aM.contains(m)){
+                Circle c = new Circle(35,Color.GREEN);
+                Label lb1 = new Label(txtNumeroMesa.getText());
+                StackPane sp = new StackPane(c,lb1);    
+                MesaData.registrarMesa(m);
+                iac.getPanelSuelo().getChildren().add(sp);
+                iac.getPanelSuelo2().getChildren().add(sp);
+                
+            }   
         }catch(Exception ex){
             ex.getStackTrace();
             System.out.println("algo pasa");
         }
-
+        //this.agregando = true;
     }
 
     @FXML
@@ -96,6 +103,8 @@ public class VentanaNuevaMesaController implements Initializable {
         txtCapacidadMesa.setText("");
         txtNumeroMesa.setText("");
     }
-
+    
+   
+    
     
 }

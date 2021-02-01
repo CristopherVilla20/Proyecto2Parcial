@@ -43,9 +43,11 @@ public class VentanaGestionMesaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
-
+    
+    //GETTERS & SETTERS
+    
     public void setSpMesa(StackPane mesa) {
         this.spMesa = mesa;
     }
@@ -62,7 +64,11 @@ public class VentanaGestionMesaController implements Initializable {
         return mesa;
     }
     
-    
+    //METODOS VENTANA_GESTION_MESA_CONTROLLER
+    /**
+     * Carga la ventana "modificadorMesa" y le setea mesa a modificar al controlador de la ventana
+     * @param event 
+     */
     @FXML
     private void modificarMesa(MouseEvent event) {
         try {
@@ -79,18 +85,27 @@ public class VentanaGestionMesaController implements Initializable {
             ex.printStackTrace();
         }
     }
-
+    
+    /**
+     * Elemina la mesa del panel 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void eliminarMesa(MouseEvent event) throws IOException {
-        try {
-            //Object MouseEvent = event.getSource();
+        try {            
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("interfazAdministrador.fxml"));
             Parent root = fxmlLoader.load();
-            InterfazAdministradorController iac = fxmlLoader.getController();
-            //for(Mesa m : MesaData.mesas){              
-                //if(m.getNumeroMesa().equals(mesa.getNumeroMesa())){
-                    //setMesa(m);
-              
+            InterfazAdministradorController iac = fxmlLoader.getController();           
+            /*
+            for(Mesa m : MesaData.mesas){              
+                if(m.getNumeroMesa().equals(mesa.getNumeroMesa())){
+                    setMesa(m);
+                }
+            }
+            */
+            MesaData.eliminarMesa(mesa);
+                /*  
             for (Node node : iac.getPanelSuelo2().getChildren()){
                 if(node instanceof StackPane){
                     StackPane st = (StackPane) node;
@@ -102,14 +117,12 @@ public class VentanaGestionMesaController implements Initializable {
                     }
                     
                 }
-            }        
-            MesaData.eliminarMesa(mesa);
-            
-        } catch (URISyntaxException ex) {
+            }
+            */
+        }   
+         catch (URISyntaxException ex) {
             System.out.println("que tiro flaco, cansado?");
             ex.printStackTrace();
         }
-    
     }
-    
 }
